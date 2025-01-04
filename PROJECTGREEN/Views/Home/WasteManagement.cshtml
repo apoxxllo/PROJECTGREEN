@@ -1,0 +1,459 @@
+﻿@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewData["Title"] = "Babag EcoHub: Waste Management";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<style>
+    body {
+        background: #7bc875;
+    }
+
+    .metric-card {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+        .metric-card h5 {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+    .badge {
+        font-size: 14px;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .badge-success {
+        background: #4CAF50;
+        color: white;
+    }
+
+    .badge-warning {
+        background: #FF9800;
+        color: white;
+    }
+
+    .badge-danger {
+        background: #F44336;
+        color: white;
+    }
+</style>
+<div class="container mt-5 mb-3">
+    <h1 class="text-center mb-4">Waste Management Overview</h1>
+    <!-- Metrics Table -->
+    <div class="accordion mt-2" id="metricsAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingMetrics">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMetrics"
+                        aria-expanded="true" aria-controls="collapseMetrics">
+                    Waste Collection and Recycling Metrics
+                </button>
+            </h2>
+            <div id="collapseMetrics" class="accordion-collapse collapse show" aria-labelledby="headingMetrics"
+                 data-bs-parent="#metricsAccordion">
+                <div class="accordion-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5>Total Waste Collected</h5>
+                                <p><span class="badge badge-success">601,350 kg (601.35 tons)</span></p>
+                                <small class="text-muted">Estimated at 20,045 kg/day waste generation rate.</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5>Biodegradable Waste</h5>
+                                <p><span class="badge badge-success">300,675 kg (50%)</span></p>
+                                <small class="text-muted">50% of total waste collected.</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5>Non-Biodegradable Waste</h5>
+                                <p><span class="badge badge-danger">210,473 kg (35%)</span></p>
+                                <small class="text-muted">35% of total waste collected.</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5>Recyclables Collected</h5>
+                                <p><span class="badge badge-warning">90,202 kg (15%)</span></p>
+                                <small class="text-muted">15% of total waste collected.</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5>Recycling Success Rate</h5>
+                                <p><span class="badge badge-success">55%</span></p>
+                                <small class="text-muted">Percentage of recyclables processed for reuse.</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5>Monthly Recycled Volume</h5>
+                                <p><span class="badge badge-success">49,611 kg</span></p>
+                                <small class="text-muted">55% of recyclables collected.</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5>Uncollected Waste</h5>
+                                <p><span class="badge badge-danger">30,067 kg (5%)</span></p>
+                                <small class="text-muted">Due to improper disposal or lack of access.</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5>E-Waste Recycled</h5>
+                                <p><span class="badge badge-warning">120 kg</span></p>
+                                <small class="text-muted">Collected via community drives.</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5>MRF Processing Capacity</h5>
+                                <p><span class="badge badge-success">6 tons/month</span></p>
+                                <small class="text-muted">Materials Recovery Facility capacity.</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion mt-2" id="initiativesAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingMetrics">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInitiatives"
+                        aria-expanded="true" aria-controls="collapseInitiatives">
+                    Current Initiatives/Programs
+                </button>
+            </h2>
+            <div id="collapseInitiatives" class="accordion-collapse collapse show" aria-labelledby="headingInitiatives"
+                 data-bs-parent="#initiativesAccordion">
+            <div class="row">
+                <!-- Total Population & Households -->
+                <div class="col-md-6">
+                    <canvas id="populationHouseholdsChart" width="100"></canvas>
+                </div>
+
+                <!-- Daily Waste Composition -->
+                <div class="col-md-6">
+                    <canvas id="wasteCompositionChart"></canvas>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <!-- Programs and Initiatives -->
+                <div class="col-md-12">
+                    <h3 class="text-center">Programs and Initiatives</h3>
+                    <canvas id="programsChart"></canvas>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <!-- Awareness Campaign Reach -->
+                <div class="col-md-12 text-center">
+                    <h3>Awareness Campaign Impact</h3>
+                    <p class="display-4">12,000 Residents Reached</p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion mt-2" id="collectionZonesAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingZones">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseZones"
+                        aria-expanded="true" aria-controls="collapseZones">
+                    Waste Collection Zones and Designated Disposal Areas
+                </button>
+            </h2>
+            <div id="collapseZones" class="accordion-collapse collapse show" aria-labelledby="headingZones"
+                 data-bs-parent="#collectionZonesAccordion">
+                <div class="accordion-body">
+                    <p>Barangay Babag is divided into two main waste collection zones based on the geographical and traffic layout. The zones ensure that the waste collection process is efficient, with specific trucks assigned to different routes.</p>
+                    <h2>Collection Zones</h2>
+                    <!-- Zone 1 -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Zone 1: Highway/Road Zone</h5>
+                            <p class="card-text">
+                                <strong>Area Coverage:</strong> Takan Babag II (Tiange Road) to iFuel Babag 1 (Timpolok) and vice versa.<br>
+                                <strong>Collection Frequency:</strong> Daily Collection (7 days/week).<br>
+                                <strong>Designated Pickup Days:</strong> Every day (9 AM – 5 PM).
+                            </p>
+                            <div id="zone1Map" style="height: 400px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Zone 2 -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Zone 2: Residential Zone</h5>
+                            <p class="card-text">
+                                <strong>Area Coverage:</strong> Naga Rd. Babag II to Trigon Rd. and Kalolo Rd., Timpolok and vice versa.<br>
+                                <strong>Collection Frequency:</strong> Daily Collection (7 days/week).<br>
+                                <strong>Designated Pickup Days:</strong> Every day (9 AM – 5 PM).
+                            </p>
+                            <div id="zone2Map" style="height: 400px;"></div>
+                        </div>
+                    </div>
+
+                    <p>The lines displayed on the map indicate the routes taken by the garbage trucks during their designated collection times.</p>
+
+                    <!-- Garbage Collection Schedule Table -->
+                    <h2>Garbage Collection Schedule</h2>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Zone</th>
+                                <th>Truck Assigned</th>
+                                <th>Collection Frequency</th>
+                                <th>Morning Trip (9:00 AM - 12:00 PM)</th>
+                                <th>Afternoon Trip (1:00 PM - 5:00 PM)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Zone 1: Highway/Road Zone</td>
+                                <td>White Truck</td>
+                                <td>Daily (7 days/week)</td>
+                                <td>9:00 AM - 12:00 PM</td>
+                                <td>1:00 PM - 5:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Zone 2: Residential Zone</td>
+                                <td>Green Truck</td>
+                                <td>Daily (7 days/week)</td>
+                                <td>9:00 AM - 12:00 PM</td>
+                                <td>1:00 PM - 5:00 PM</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Notes and Special Considerations -->
+                    <h3>Notes and Special Considerations</h3>
+                    <ul>
+                        <li><strong>Routes:</strong> Routes may be adjusted based on road conditions or community needs.</li>
+                        <li><strong>Waste Segregation:</strong> Residents are encouraged to segregate waste into biodegradable and non-biodegradable categories to improve the recycling process.</li>
+                        <li><strong>Recycling and Composting Initiatives:</strong> A Materials Recovery Facility (MRF) is available to collect recyclables and compostable waste, especially in Zone 1.</li>
+                        <li><strong>Late Collection:</strong> If residents miss the designated collection time, they can arrange for pickup the next day during the same timeslot.</li>
+                        <li><strong>Holidays/Special Circumstances:</strong> In case of public holidays or special events, collection schedules may be adjusted, and notices will be posted in advance.</li>
+                    </ul>
+
+
+                    <h2>Disposal Areas</h2>
+
+                    <!-- MRF (Materials Recovery Facility) -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Materials Recovery Facility (MRF)</h5>
+                            <p class="card-text">
+                                Located centrally in Barangay Babag II, this facility is responsible for sorting and recovering recyclable materials before final disposal. (marked in orange circle)<br>
+                                <strong>Location:</strong> 7WFR+PVJ, Naga Rd, Lapu-Lapu City, 6015 Cebu.
+                            </p>
+                            <div id="mrfMap" style="height: 400px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Landfill/Transfer Station -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Landfill/Transfer Station</h5>
+                            <p class="card-text">
+                                This landfill/transfer station is situated at the barangay border, away from residential areas. It serves as a temporary disposal site for waste before it is transferred to the main landfill. (marked in purple circle)<br>
+                                <strong>Location:</strong> 8X3W+RG6, Casia-Soong Rd, Lapu-Lapu City, Cebu.
+                            </p>
+                            <div id="landfillMap" style="height: 400px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0zahI7hminjL3voy9xXdpV3nJq2p-KjU"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    function initMaps() {
+        // Zone 1 Map
+        const zone1Map = new google.maps.Map(document.getElementById("zone1Map"), {
+            center: { lat: 10.30765, lng: 123.97321 }, // Center near Zone 1
+            zoom: 14,
+        });
+        const zone1DirectionsService = new google.maps.DirectionsService();
+        const zone1DirectionsRenderer = new google.maps.DirectionsRenderer();
+        zone1DirectionsRenderer.setMap(zone1Map);
+
+        zone1DirectionsService.route(
+            {
+                destination: "Takan Babag II, Lapu-Lapu City",
+                origin: "7-Eleven Tiangue Rd 1, Lapu- Lapu City Cebu Philippines",
+                travelMode: google.maps.TravelMode.DRIVING,
+            },
+            (response, status) => {
+                if (status === google.maps.DirectionsStatus.OK) {
+                    zone1DirectionsRenderer.setDirections(response);
+                } else {
+                    console.error("Error fetching Zone 1 directions: " + status);
+                }
+            }
+        );
+
+        // Zone 2 Map
+        const zone2Map = new google.maps.Map(document.getElementById("zone2Map"), {
+            center: { lat: 10.306, lng: 123.975 }, // Center near Zone 2
+            zoom: 14,
+        });
+        const zone2DirectionsService = new google.maps.DirectionsService();
+        const zone2DirectionsRenderer = new google.maps.DirectionsRenderer();
+        zone2DirectionsRenderer.setMap(zone2Map);
+
+        zone2DirectionsService.route(
+            {
+                origin: "7-Eleven 7WPV+RQW, Tiangue Rd, Lapu-Lapu City, Cebu",
+                destination: "Naga road, Babang II Rd, Lapu-Lapu City, 6016 Cebu",
+                waypoints: [
+                    { location: "Blk 12 Lot 123, Babag I, La Aldea, Buena Mactan, Lapu-Lapu City, Cebu", stopover: true },
+                    { location: "7WGR+WC2, Lapu-Lapu City, Cebu", stopover: true },
+                    { location: "7WFR+9P5, Naga Rd, Lapu-Lapu City, 6015 Cebu", stopover: true },
+                ],
+                travelMode: google.maps.TravelMode.DRIVING,
+            },
+            (response, status) => {
+                if (status === google.maps.DirectionsStatus.OK) {
+                    zone2DirectionsRenderer.setDirections(response);
+                } else {
+                    console.error("Error fetching Zone 2 directions: " + status);
+                }
+            }
+        );
+        // Initialize MRF Map
+        const mrfMap = new google.maps.Map(document.getElementById("mrfMap"), {
+            center: { lat: 10.274810100615305, lng: 123.94213115079133 }, // Coordinates for MRF at 7WFR+PVJ
+            zoom: 16,
+        });
+        new google.maps.Marker({
+            position: { lat: 10.274810100615305, lng: 123.94213115079133 },
+            map: mrfMap,
+            title: "MRF (Materials Recovery Facility)",
+            icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 10,
+                fillColor: "orange",
+                fillOpacity: 1,
+                strokeColor: "orange",
+                strokeWeight: 2,
+            },
+        });
+
+        // Initialize Landfill/Transfer Station Map
+        const landfillMap = new google.maps.Map(document.getElementById("landfillMap"), {
+            center: { lat: 10.304658286433977, lng: 123.99667183298469 }, // Coordinates for Landfill at 8X3W+RG6
+            zoom: 16,
+        });
+        new google.maps.Marker({
+            position: { lat: 10.304658286433977, lng: 123.99667183298469 },
+            map: landfillMap,
+            title: "Landfill/Transfer Station",
+            icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 10,
+                fillColor: "purple",
+                fillOpacity: 1,
+                strokeColor: "purple",
+                strokeWeight: 2,
+            },
+        });
+    }
+
+    // Initialize maps when the page loads
+    window.onload = initMaps;
+
+        // Population and Households Chart
+        new Chart(document.getElementById('populationHouseholdsChart'), {
+            type: 'pie',
+            data: {
+                labels: ['Households Practicing Segregation', 'Community Composting Participation', 'Other Households'],
+                datasets: [{
+                    data: [3701, 802, 6168 - (3701 + 802)],
+                    backgroundColor: ['#4CAF50', '#FF9800', '#9E9E9E']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' }
+                }
+            }
+        });
+
+        // Waste Composition Chart
+        new Chart(document.getElementById('wasteCompositionChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Biodegradable', 'Non-Biodegradable', 'Recyclable'],
+                datasets: [{
+                    data: [10022, 7016, 3007],
+                    backgroundColor: ['#4CAF50', '#F44336', '#2196F3']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' }
+                }
+            }
+        });
+
+        // Programs and Initiatives Chart
+        new Chart(document.getElementById('programsChart'), {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Recycling Drive Collection',
+                    'Plastic-Free Initiatives',
+                    'E-Waste Collection',
+                    'Waste-to-Energy Output'
+                ],
+                datasets: [{
+                    label: 'Data',
+                    data: [1800, 40, 120, 300],
+                    backgroundColor: ['#2196F3', '#FF9800', '#9C27B0', '#4CAF50']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: true }
+                },
+                scales: {
+                    x: { title: { display: true, text: 'Programs' } },
+                    y: { title: { display: true, text: 'Data' } }
+                }
+            }
+        });
+    </script>
+

@@ -1,7 +1,23 @@
+using PROJECTGREEN.Authentication;
+using PROJECTGREEN.Models;
+using Microsoft.AspNetCore.Identity;
+using PROJECTGREEN.Authentication;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+builder.Services.Configure<TokenAuthentication>(builder.Configuration.GetSection("TokenAuthentication"));
+builder.Services.AddScoped<TokenValidationParametersFactory>();
+//builder.Services.AddScoped<SignInManager>();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<TokenProviderOptionsFactory>();
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = "PROJECTGREEN"; // Set the default authentication scheme
+    options.DefaultSignInScheme = "PROJECTGREEN"; // Set the sign-in scheme
+    options.DefaultChallengeScheme = "PROJECTGREEN"; // Set the challenge scheme
+});
 
 var app = builder.Build();
 
@@ -22,6 +38,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Dashboard}/{id?}");
 
 app.Run();
