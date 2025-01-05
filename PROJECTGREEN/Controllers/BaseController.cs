@@ -7,7 +7,7 @@ namespace PROJECTGREEN.Controllers
 {
     public class BaseController : Controller
     {
-        public ProjectGreenDbContext _db;
+        public DbAb152cProjectgreendbContext _db;
         public BaseRepository<User> _userRepo;
         public BaseRepository<ProgramFeedback> _programFeedbackRepo;
         public BaseRepository<Event> _eventRepo;
@@ -21,9 +21,10 @@ namespace PROJECTGREEN.Controllers
         public BaseRepository<RoleWorkSchedule> _roleWorkScheduleRepo;
         public BaseRepository<EmployeeTimetable> _employeeTimetableRepo;
         public BaseRepository<IncidentFeedback> _incidentFeedbackRepo;
+        public BaseRepository<ReportGarbageCollection> _reportGarbageCollectionRepo;
         public BaseController()
         {
-            _db = new ProjectGreenDbContext();
+            _db = new DbAb152cProjectgreendbContext();
             _userRepo = new BaseRepository<User>();
             _eventRepo = new BaseRepository<Event>();
             _programFeedbackRepo = new BaseRepository<ProgramFeedback>();
@@ -37,6 +38,7 @@ namespace PROJECTGREEN.Controllers
             _roleWorkScheduleRepo = new BaseRepository<RoleWorkSchedule>();
             _employeeTimetableRepo = new BaseRepository<EmployeeTimetable>();
             _incidentFeedbackRepo = new BaseRepository<IncidentFeedback>();
+            _reportGarbageCollectionRepo = new BaseRepository<ReportGarbageCollection>();
         }
 
     }

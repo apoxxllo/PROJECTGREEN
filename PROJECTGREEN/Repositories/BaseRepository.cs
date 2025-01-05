@@ -14,7 +14,7 @@ namespace PROJECTGREEN.Repositories
         public DbSet<T> Table { get { return _table; } }
         public BaseRepository()
         {
-            _db = new ProjectGreenDbContext();
+            _db = new DbAb152cProjectgreendbContext();
             _table = _db.Set<T>();
         }
         public T Get(object id)

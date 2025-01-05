@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PROJECTGREEN.Manager;
 using PROJECTGREEN.Models;
 using System.Diagnostics;
@@ -18,6 +19,53 @@ namespace PROJECTGREEN.Controllers
 
         public IActionResult Dashboard()
         {
+            var topEvents = _programFeedbackRepo.Table
+                .GroupBy(e => e.EventId)
+                .Select(group => new TopEvent
+                {
+                    NameOfEvent = group.FirstOrDefault().Event.EventName,
+                    AverageStar = group.Average(e => e.Stars),
+                    Link = group.FirstOrDefault().Event.DocuLink
+                })
+                .OrderByDescending(eventGroup => eventGroup.AverageStar)
+                .Take(3)
+                .ToList();
+                var purokNames = new[] {
+                    "Purok Super Sunlight", "Purok Beauty in the Sky", "Purok Rambo", "Purok Butterfly 1",
+                    "Purok Butterfly 2", "Purok Shooting Star", "Purok Judas Belt", "Purok Thunder",
+                    "Purok Five-Star", "Purok Bombshell", "Skina Trigon", "Skina Radar", "Skina Naga"
+                };
+                var incidents = _incidentRepo.Table
+                               .Where(i => purokNames.Any(p => i.Location.Contains(p))) // Filter only relevant locations
+                               .Select(i => new
+                               {
+                                   MatchedPurok = purokNames.FirstOrDefault(p => i.Location.Contains(p)), // Extract the purok name
+                                   i.IncidentType
+                               })
+                               .GroupBy(i => new { i.MatchedPurok, i.IncidentType }) // Group by matched purok and type of incident
+                               .Select(group => new IncidentFrequency
+                               {
+                                   Location = group.Key.MatchedPurok, // Use only the matched purok name
+                                   TypeOfIncident = group.Key.IncidentType,
+                                   Frequency = $"{group.Count()} incidents" // Format frequency
+                               })
+               .OrderBy(i => i.Location) // Optional: order by location
+               .ThenBy(i => i.TypeOfIncident) // Optional: order by type of incident
+               .ToList();
+
+
+            ViewBag.TopEvents = topEvents;
+            ViewBag.Incidents = incidents;
+            DateTime utcNow = DateTime.UtcNow;
+
+            // Define the timezone offset for UTC+08:00
+            TimeSpan utcOffset = TimeSpan.FromHours(8); // UTC+08:00
+
+            // Apply the timezone offset to get the local time in UTC+08:00
+            Nullable<DateTime> PHTIME = utcNow + utcOffset;
+            var announcements = _adminNoteRepo.Table.Where(m => m.Date.Value.Day == PHTIME.Value.Day).FirstOrDefault();
+
+            ViewBag.Announcements = announcements;  
             return View();
         }
 
@@ -73,6 +121,40 @@ namespace PROJECTGREEN.Controllers
             TempData["message"] = "You have successfully subscribed for email alerts!";
             return RedirectToAction("WasteManagement"); // Redirect to the home page or any page
         }
+
+
+        [HttpPost]
+        public IActionResult ReportGarbage(string firstName, string lastName, string email, string purok, string detailedAddress, string latitude, DateTime preferredDatetime)
+        {
+            DateTime utcNow = DateTime.UtcNow;
+
+            // Define the timezone offset for UTC+08:00
+            TimeSpan utcOffset = TimeSpan.FromHours(8); // UTC+08:00
+
+            // Apply the timezone offset to get the local time in UTC+08:00
+            Nullable<DateTime> PHTIME = utcNow + utcOffset;
+            var report = new ReportGarbageCollection
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                Email = email,
+                Purok = purok,
+                Address = detailedAddress,
+                Lat = latitude,
+                Date = PHTIME,
+                Status = "ONGOING"
+            };
+
+            _reportGarbageCollectionRepo.Create(report);
+
+            string errResponse = "";
+            var captain = _userRepo.Table.Where(m => m.BarangayPositionId == 1).FirstOrDefault();
+            _mailManager.SendReportGarbageAdminEmail(captain.Email, "Garbage Collection Report", captain.FirstName, firstName, ref errResponse);
+
+            TempData["message"] = "Your report has been successfully submitted!";
+            return RedirectToAction("WasteManagement");
+        }
+
 
         [HttpPost]
         public IActionResult Unsubscribe(string email)
@@ -221,7 +303,7 @@ namespace PROJECTGREEN.Controllers
 
 
         [HttpPost]
-        public ActionResult ReportIncident(string type, DateTime datetime, string location)
+        public ActionResult ReportIncident(string type, DateTime datetime, string location, string purok)
         {
 
             // Save the incident to the database
@@ -229,7 +311,7 @@ namespace PROJECTGREEN.Controllers
             {
                 IncidentType = type,
                 Date = datetime,
-                Location = location,
+                Location = purok + " " + location,
                 Status = "PENDING"
             };
 

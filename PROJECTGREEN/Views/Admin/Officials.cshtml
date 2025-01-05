@@ -1,0 +1,532 @@
+﻿@model AdminViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Babag EcoHub: Barangay Officials";
+    var captain = ViewBag.Captain as User;
+    var sec = ViewBag.Secretary as User;
+    var treasurer = ViewBag.Treasurer as User;
+    var councilors = ViewBag.Councilors as IEnumerable<User>;
+    var skCouncilors = ViewBag.SkCouncilors as IEnumerable<User>;
+    var skChairman = ViewBag.SkChairman as User;
+    var skSecretary = ViewBag.SkSecretary as User;
+    var skTreasurer = ViewBag.SkTreasurer as User;
+}
+<style>
+        .bg-light {
+            background-color: #f9f9f9;
+            /* border: 1px solid #e0e0e0; */
+        }
+
+        h2.text-success {
+            font-family: 'Arial Black', sans-serif;
+            text-shadow: 1px 1px 5px rgba(0, 128, 0, 0.2);
+        }
+
+        h3.text-primary {
+            font-family: 'Georgia', serif;
+            color: #007bff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 255, 0.1);
+        }
+
+        .list-group-item {
+            font-family: 'Verdana', sans-serif;
+            font-size: 16px;
+            background-color: #fff;
+            border: none;
+            padding: 12px 15px;
+            margin: 5px 0;
+            border-radius: 8px;
+            box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.05);
+        }
+
+            .list-group-item strong {
+                color: #333;
+                font-weight: bold;
+            }
+
+        .shadow {
+            box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-center {
+            margin-bottom: 20px;
+        }
+
+        body {
+            background: #7bc875;
+        }
+
+        .official-card {
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+            .official-card img {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                margin-right: 15px;
+                border: black 0.5px solid;
+            }
+
+            .official-card h4 {
+                margin: 0;
+            }
+
+            .official-card p {
+                margin: 0;
+            }
+
+        .captain-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 3px solid #007bff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+        }
+        /* General Styles for Organizational Chart */
+    .org-chart {
+        text-align: center;
+    }
+
+    .modal-body {
+        max-height: 80vh; /* Limit the height to 80% of the viewport */
+        overflow-y: auto; /* Enable vertical scrolling */
+    }
+
+    .position-box {
+        padding: 15px;
+        margin-bottom: 10px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .position-box img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    .position-top {
+        margin-bottom: 30px;
+    }
+
+    .position-councilors,
+    .position-secretary-treasurer,
+    .position-sk {
+        margin-top: 20px;
+    }
+
+    .position-councilors h5,
+    .position-secretary-treasurer h5,
+    .position-sk h5 {
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+    }
+
+    .position-councilors .row,
+    .position-secretary-treasurer .row {
+        display: flex;
+        justify-content: space-around;
+        gap: 15px;
+    }
+
+    .position-councilors .col-4,
+    .position-secretary-treasurer .col-6 {
+        display: flex;
+        justify-content: center;
+    }
+
+    .position-box p {
+        font-size: 1rem;
+        margin-top: 8px;
+    }
+
+    /* Mobile responsiveness */
+    @@media (max-width: 768px) {
+        .position-councilors .row,
+        .position-secretary-treasurer .row {
+            flex-direction: column;
+        }
+
+        .position-councilors .col-4,
+        .position-secretary-treasurer .col-6 {
+            margin-bottom: 10px;
+        }
+    }
+
+</style>
+
+<div class="container my-5" style="background: #f4f4f4; border-radius: 40px; padding-top: 20px;">
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success" style="border-radius: 0;" role="alert">
+            @TempData["message"]
+        </div>
+    }
+    @if (TempData["error"] != null)
+    {
+        <div class="alert alert-danger" style="border-radius: 0;" role="alert">
+            @TempData["error"]
+        </div>
+    }
+    <div class="text-center">
+        <h1 class="display-4">Babag EcoHub: Organization</h1>
+        <p class="lead">Highlighting Barangay Officials and Their Roles in Green Initiatives</p>
+    </div>
+    <div class="bg-light p-4 mb-4 rounded shadow">
+        <div class="text-center">
+            <img src="@captain.ProfilePicPath"
+                 alt="captainPic"
+                 class="rounded-circle mb-3 captain-img"
+                 onerror="this.onerror=null;this.src='/images/defaultProfile.jpg';">
+            <h2 class="text-success fw-bold">Punong Barangay</h2>
+            <h3 class="text-primary">Hon. @captain.FirstName @captain.LastName</h3>
+        </div>
+        <div class="mt-3">
+            <h4 class="text-primary">Responsibilities:</h4>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <strong>Policy Formulation and Implementation:</strong> Develop and enforce barangay ordinances promoting environmental sustainability, such as proper waste segregation, recycling programs, and tree-planting activities.
+                </li>
+                <li class="list-group-item">
+                    <strong>Resource Allocation:</strong> Ensure sufficient budget allocation for environmental programs, such as funding for waste management facilities, eco-friendly infrastructure, and community education campaigns.
+                </li>
+                <li class="list-group-item">
+                    <strong>Leadership in Environmental Committees:</strong> Spearhead and provide oversight for committees dedicated to environmental protection, such as the Committee on Solid Waste Management and Environmental Protection.
+                </li>
+                <li class="list-group-item">
+                    <strong>Public Awareness and Engagement:</strong> Lead efforts to educate the community on the importance of environmental conservation through seminars, information campaigns, and collaboration with schools and civic organizations.
+                </li>
+                <li class="list-group-item">
+                    <strong>Collaboration with Stakeholders:</strong> Partner with government agencies, private organizations, and NGOs to implement green initiatives and access funding or technical support.
+                </li>
+                <li class="list-group-item">
+                    <strong>Monitoring and Evaluation:</strong> Oversee the implementation of green initiatives and regularly assess their impact, ensuring programs meet sustainability goals and address community needs effectively.
+                </li>
+                <li class="list-group-item">
+                    <strong>Disaster Preparedness and Environmental Resilience:</strong> Incorporate climate adaptation and mitigation strategies into community planning to protect the environment and reduce risks from natural disasters.
+                </li>
+                <li class="list-group-item">
+                    <strong>Encouraging Eco-Friendly Practices:</strong> Promote the use of renewable energy, reduction of plastic usage, and adoption of sustainable livelihood projects to minimize environmental impact.
+                </li>
+                <li class="list-group-item">
+                    <strong>Conflict Resolution:</strong> Mediate disputes arising from environmental policies, such as land use or waste disposal, ensuring peaceful and constructive resolutions.
+                </li>
+                <li class="list-group-item">
+                    <strong>Role Model for the Community:</strong> Serve as a model for eco-friendly living, actively participating in green initiatives to inspire and motivate constituents.
+                </li>
+            </ul>
+        </div>
+
+        <!-- Button to open the organizational chart modal -->
+        <div class="text-center mt-4">
+            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#orgChartModal">
+                View Organizational Chart
+            </button>
+        </div>
+    </div>
+
+    <div class="accordion mt-5" id="parentAccordion">
+      
+    </div>
+
+    <div class="text-center mt-5">
+        <p class="text-muted">Prepared by Barangay Babag EcoHub Committee</p>
+    </div>
+</div>
+<!-- Modal for Organizational Chart -->
+<div class="modal fade" id="orgChartModal" tabindex="-1" aria-labelledby="orgChartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="orgChartModalLabel">Organizational Chart</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="org-chart">
+                    <!-- Punong Barangay -->
+                    <div class="position-box position-top">
+                        <img src="@captain.ProfilePicPath" class="rounded-circle" alt="Punong Barangay" onerror="this.onerror=null;this.src='/images/defaultProfile.jpg';">
+                        <h5>Punong Barangay</h5>
+                        <p>Hon. @captain.FirstName @captain.LastName</p>
+                        <button class="btn btn-warning btn-sm"
+                                data-bs-toggle="modal"
+                                data-bs-target="#editOfficialModal"
+                                data-official="captain"
+                                data-id="@captain.Id"
+                                data-firstname="@captain.FirstName"
+                                data-lastname="@captain.LastName"
+                                data-profilepic="@captain.ProfilePicPath">
+                            Edit Captain
+                        </button>
+                    </div>
+
+                    <!-- Councilors -->
+                    <div class="position-box position-councilors">
+                        <h5>Councilors</h5>
+                        <div class="row">
+                            @foreach (var councilor in councilors)
+                            {
+                                <div class="col-4">
+                                    <div class="position-box">
+                                        <img src="@councilor.ProfilePicPath" class="rounded-circle" alt="Councilor" onerror="this.onerror=null;this.src='/images/defaultProfile.jpg';">
+                                        <p>@councilor.FirstName @councilor.LastName</p>
+                                        <button class="btn btn-warning btn-sm"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#editOfficialModal"
+                                                data-official="councilor"
+                                                data-id="@councilor.Id"
+                                                data-firstname="@councilor.FirstName"
+                                                data-lastname="@councilor.LastName"
+                                                data-profilepic="@councilor.ProfilePicPath">
+                                            Edit Councilor
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Barangay Secretary and Treasurer -->
+                    <div class="position-box position-secretary-treasurer">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <h5>Barangay Secretary</h5>
+                                <div class="position-box">
+                                    <img src="@sec.ProfilePicPath" class="rounded-circle" alt="Secretary" onerror="this.onerror=null;this.src='/images/defaultProfile.jpg';">
+                                    <p>@sec.FirstName @sec.LastName</p>
+                                    <button class="btn btn-warning btn-sm"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#editOfficialModal"
+                                            data-official="secretary"
+                                            data-id="@sec.Id"
+                                            data-firstname="@sec.FirstName"
+                                            data-lastname="@sec.LastName"
+                                            data-profilepic="@sec.ProfilePicPath">
+                                        Edit Secretary
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <h5>Barangay Treasurer</h5>
+                                <div class="position-box">
+                                    <img src="@treasurer.ProfilePicPath" class="rounded-circle" alt="Treasurer" onerror="this.onerror=null;this.src='/images/defaultProfile.jpg';">
+                                    <p>@treasurer.FirstName @treasurer.LastName</p>
+                                    <button class="btn btn-warning btn-sm"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#editOfficialModal"
+                                            data-official="treasurer"
+                                            data-id="@treasurer.Id"
+                                            data-firstname="@treasurer.FirstName"
+                                            data-lastname="@treasurer.LastName"
+                                            data-profilepic="@treasurer.ProfilePicPath">
+                                        Edit Treasurer
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SK Leadership -->
+                    <div class="position-box position-sk">
+                        <h5>SK Leadership</h5>
+                        <div class="row">
+                            <div class="col-6">
+                                <h6>SK Chairman</h6>
+                                <div class="position-box">
+                                    <img src="@skChairman.ProfilePicPath" class="rounded-circle" alt="SK Chairman" onerror="this.onerror=null;this.src='/images/defaultProfile.jpg';">
+                                    <p>@skChairman.FirstName @skChairman.LastName</p>
+                                    <button class="btn btn-warning btn-sm"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#editOfficialModal"
+                                            data-official="skChairman"
+                                            data-id="@skChairman.Id"
+                                            data-firstname="@skChairman.FirstName"
+                                            data-lastname="@skChairman.LastName"
+                                            data-profilepic="@skChairman.ProfilePicPath">
+                                        Edit SK Chairman
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <h6>SK Secretary</h6>
+                                <div class="position-box">
+                                    <img src="@skSecretary.ProfilePicPath" class="rounded-circle" alt="SK Secretary" onerror="this.onerror=null;this.src='/images/defaultProfile.jpg';">
+                                    <p>@skSecretary.FirstName @skSecretary.LastName</p>
+                                    <button class="btn btn-warning btn-sm"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#editOfficialModal"
+                                            data-official="skSecretary"
+                                            data-id="@skSecretary.Id"
+                                            data-firstname="@skSecretary.FirstName"
+                                            data-lastname="@skSecretary.LastName"
+                                            data-profilepic="@skSecretary.ProfilePicPath">
+                                        Edit SK Secretary
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h5>SK Councilors</h5>
+                        <div class="row">
+                            @foreach (var skCouncilor in skCouncilors)
+                            {
+                                <div class="col-4">
+                                    <div class="position-box">
+                                        <img src="@skCouncilor.ProfilePicPath" class="rounded-circle" alt="SK Councilor" onerror="this.onerror=null;this.src='/images/defaultProfile.jpg';">
+                                        <p>@skCouncilor.FirstName @skCouncilor.LastName</p>
+                                        <button class="btn btn-warning btn-sm"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#editOfficialModal"
+                                                data-official="skCouncilor"
+                                                data-id="@skCouncilor.Id"
+                                                data-firstname="@skCouncilor.FirstName"
+                                                data-lastname="@skCouncilor.LastName"
+                                                data-profilepic="@skCouncilor.ProfilePicPath">
+                                            Edit SK Councilor
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <h5>SK Treasurer</h5>
+                        <div class="position-box">
+                            <img src="@skTreasurer.ProfilePicPath" class="rounded-circle" alt="SK Treasurer" onerror="this.onerror=null;this.src='/images/defaultProfile.jpg';">
+                            <p>@skTreasurer.FirstName @skTreasurer.LastName</p>
+                            <button class="btn btn-warning btn-sm"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#editOfficialModal"
+                                    data-official="skTreasurer"
+                                    data-id="@skTreasurer.Id"
+                                    data-firstname="@skTreasurer.FirstName"
+                                    data-lastname="@skTreasurer.LastName"
+                                    data-profilepic="@skTreasurer.ProfilePicPath">
+                                Edit SK Treasurer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Editing Official -->
+<div class="modal fade" id="editOfficialModal" tabindex="-1" aria-labelledby="editOfficialModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editOfficialModalLabel">Edit Official</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editOfficialForm" enctype="multipart/form-data" method="post" action="@Url.Action("EditOfficial", "Admin")">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="officialId" name="Id" readonly hidden>
+                    </div>
+                    <div class="mb-3">
+                        <label for="officialFirstName" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="officialFirstName" name="firstName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="officialLastName" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="officialLastName" name="lastName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="officialPosition" class="form-label">Position</label>
+                        <input type="text" class="form-control" id="officialPosition" name="officialPosition" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="profilePicture" class="form-label" style="color: black;">Profile Picture</label>
+                        <input type="file" class="form-control" id="profilePicture" name="ProfilePic" accept="image/png, image/jpeg, image/jpg, image/gif" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        // Script to populate the Edit Official modal with data
+        $('#editOfficialModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var official = button.data('official'); // Get the official's identifier (captain, councilor, etc.)
+            var officialId = button.data('id'); // Get the official's unique ID
+            var officialFirstName = button.data('firstname'); // Get the official's first name
+            var officialLastName = button.data('lastname'); // Get the official's last name
+            var officialProfilePic = button.data('profilepic'); // Get the official's profile pic path
+
+            var modal = $(this);
+            modal.find('#officialId').val(officialId);
+            modal.find('#officialPosition').val(official);
+            modal.find('#officialFirstName').val(officialFirstName);
+            modal.find('#officialLastName').val(officialLastName);
+            modal.find('#officialProfilePic').val(officialProfilePic);
+
+            console.log("Official ID: " + officialId + ", Name: " + officialFirstName + " " + officialLastName);
+        });
+    });
+
+    $(document).ready(function () {
+        // When Reassign button is clicked
+        $('#reassignModal').on('show.bs.modal', function (event) {
+            // Get data from the clicked button
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var committeeId = button.data('committee-id'); // Get committee ID
+            var committeeName = button.data('committee-name'); // Get committee name
+
+            var modal = $(this);
+            modal.find('.modal-title').text("Reassign " + committeeName); // Set the title dynamically
+
+            // Set a hidden field or use it in the reassign button (optional)
+            modal.find('#reassignButton').data('committee-id', committeeId);
+        });
+
+        // When Reassign button in the modal is clicked
+        $('#reassignButton').click(function () {
+            var committeeId = $(this).data('committee-id'); // Get the committee ID
+            var newAssigneeId = $('#reassignTo').val(); // Get the selected new assignee
+
+            if (newAssigneeId) {
+                // Here, send an AJAX request or form submission to reassign the task
+                $.ajax({
+                    url: '/Admin/ReassignCommittee', // Your server-side action to handle reassign
+                    method: 'POST',
+                    data: { committeeId: committeeId, newAssigneeId: newAssigneeId},
+                    success: function (response) {
+                        // Handle success (maybe show a success message)
+                        alert('Committee reassigned successfully!');
+                        $('#reassignModal').modal('hide'); // Close modal after success
+                    },
+                    error: function (error) {
+                        // Handle error (maybe show an error message)
+                        alert('An error occurred while reassigning the committee.');
+                    }
+                });
+            } else {
+                alert('Please select a new assignee.');
+            }
+        });
+    });
+
+
+
+</script>
+

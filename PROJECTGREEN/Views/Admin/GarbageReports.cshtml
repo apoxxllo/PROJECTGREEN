@@ -1,0 +1,94 @@
+﻿@model AdminViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Babag EcoHub: Garbage Reports";
+
+    var reports = ViewBag.Reports as List<ReportGarbageCollection>;
+}
+
+<div class="container mt-5">
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success" style="border-radius: 0;" role="alert">
+            @TempData["message"]
+        </div>
+    }
+    @if (TempData["error"] != null)
+    {
+        <div class="alert alert-danger" style="border-radius: 0;" role="alert">
+            @TempData["error"]
+        </div>
+    }
+    <h2 class="text-center mb-4">Garbage Collection Reports</h2>
+
+    <!-- Loop through all reports and display them in cards -->
+    @foreach (var report in reports)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5 class="card-title">Reported missed Garbage Collection from: @report.Purok</h5>
+                <p class="card-text"><strong>Preferred Date:</strong> @report.Date.Value.ToString("MM/dd/yyyy")</p>
+            </div>
+            <div class="card-body">
+                <p class="card-text"><strong>Reported by:</strong> @report.FirstName</p>
+                <p class="card-text"><strong>Location:</strong> @report.Address</p>
+
+                <!-- Button to open modal for responding to the report -->
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#respondModal" data-reportid="@report.Id">
+                    Respond to Report
+                </button>
+            </div>
+        </div>
+    }
+    @if (!reports.Any())
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5 class="card-title">No reports available</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Brgy. Babag is all up to date with Garbage Collection!</p>
+            </div>
+        </div>
+    }
+
+    <!-- Modal for responding to the report -->
+    <div class="modal fade" id="respondModal" tabindex="-1" aria-labelledby="respondModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="respondModalLabel">Respond to Report</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="respondReportForm" method="post" asp-action="RespondToReport" asp-controller="Admin">
+
+                <div class="modal-body">
+                        <input type="hidden" id="ReportId" name="ReportId" />
+                        <div class="mb-3">
+                            <label for="responseMessage" class="form-label">Response Message</label>
+                            <textarea class="form-control" id="responseMessage" name="ResponseMessage" rows="6" style="height: 200px;" placeholder="Enter your response..."></textarea>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="submitResponseButton">Submit Response</button>
+                </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Handle opening the modal and setting the ReportId in the form
+    const respondButtons = document.querySelectorAll('[data-bs-toggle="modal"]');
+    respondButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const reportId = button.getAttribute('data-reportid');
+            document.getElementById('ReportId').value = reportId;
+        });
+    });
+
+   
+</script>

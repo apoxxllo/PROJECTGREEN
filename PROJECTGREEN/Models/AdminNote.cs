@@ -10,4 +10,6 @@ public partial class AdminNote
     public string? Note { get; set; }
 
     public DateTime? Date { get; set; }
+
+    public string? Subject { get; set; }
 }

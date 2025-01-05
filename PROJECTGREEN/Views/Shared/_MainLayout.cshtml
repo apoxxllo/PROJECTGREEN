@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    
+
+}
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -33,6 +37,59 @@
 </head>
 
 <body>
+
+    <style>
+        /* Popup Container */
+        .announcement-popup {
+            position: fixed;
+            bottom: -100px; /* Initially hidden below the screen */
+            left: 20px;
+            width: 300px;
+            background-color: #98d99f;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0; /* Initially invisible */
+            transition: bottom 0.5s ease, opacity 0.5s ease;
+            z-index: 9999;
+        }
+
+        /* Popup Content */
+        .popup-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Close Button */
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: #721c24;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+            .close-btn:hover {
+                color: #f5c6cb;
+            }
+
+        /* When popup is visible */
+        .announcement-popup.show {
+            bottom: 20px; /* Slide up to visible position */
+            opacity: 1; /* Make it fully visible */
+        }
+
+        /* Optional: Stylish Announcement Text */
+        #announcement-text {
+            margin: 0;
+            font-size: 14px;
+        }
+
+    </style>
 
     <!-- Spinner Start -->
     <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
@@ -121,49 +178,24 @@
                         <div class="row g-2">
                             <div class="col-4">
                                 <div class="footer-gallery">
-                                    <img src="img/gallery-footer-1.jpg" class="img-fluid w-100" alt="">
+                                    <img src="images/babagLandscape1.png" class="img-fluid w-100" alt="">
                                     <div class="footer-search-icon">
-                                        <a href="img/gallery-footer-1.jpg" data-lightbox="footerGallery-1" class="my-auto"><i class="fas fa-search-plus text-white"></i></a>
+                                        <a href="images/babagLandscape2.png" data-lightbox="footerGallery-1" class="my-auto"><i class="fas fa-search-plus text-white"></i></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="footer-gallery">
-                                    <img src="img/gallery-footer-2.jpg" class="img-fluid w-100" alt="">
+                                    <img src="images/babagLogo.png" class="img-fluid w-100" alt="">
                                     <div class="footer-search-icon">
-                                        <a href="img/gallery-footer-2.jpg" data-lightbox="footerGallery-2" class="my-auto"><i class="fas fa-search-plus text-white"></i></a>
+                                        <a href="images/babagPortrait.jpg" data-lightbox="footerGallery-2" class="my-auto"><i class="fas fa-search-plus text-white"></i></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="footer-gallery">
-                                    <img src="img/gallery-footer-3.jpg" class="img-fluid w-100" alt="">
+                                    <img src="images/logo-mini.png" class="img-fluid w-100" alt="">
                                     <div class="footer-search-icon">
-                                        <a href="img/gallery-footer-3.jpg" data-lightbox="footerGallery-3" class="my-auto"><i class="fas fa-search-plus text-white"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="footer-gallery">
-                                    <img src="img/gallery-footer-4.jpg" class="img-fluid w-100" alt="">
-                                    <div class="footer-search-icon">
-                                        <a href="img/gallery-footer-4.jpg" data-lightbox="footerGallery-4" class="my-auto"><i class="fas fa-search-plus text-white"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="footer-gallery">
-                                    <img src="img/gallery-footer-5.jpg" class="img-fluid w-100" alt="">
-                                    <div class="footer-search-icon">
-                                        <a href="img/gallery-footer-5.jpg" data-lightbox="footerGallery-5" class="my-auto"><i class="fas fa-search-plus text-white"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="footer-gallery">
-                                    <img src="img/gallery-footer-6.jpg" class="img-fluid w-100" alt="">
-                                    <div class="footer-search-icon">
-                                        <a href="img/gallery-footer-6.jpg" data-lightbox="footerGallery-6" class="my-auto"><i class="fas fa-search-plus text-white"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -194,13 +226,18 @@
             </div>
         </div>
     </div>
+
+
     <!-- Copyright End -->
     <!-- Back to Top -->
-    <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>
-
-
-    <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+    
+
+
+   
+    <!-- JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/easing/easing.min.js"></script>
     <script src="~/lib/waypoints/waypoints.min.js"></script>

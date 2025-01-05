@@ -4,7 +4,6 @@
     ViewData["Title"] = "Babag EcoHub: Waste Management";
     var totalWasteCollected = Model.BiodegradableCollected + Model.NonbioCollected + Model.RecyclablesCollected;
     var totalWasteCollectedInTons = (Model.BiodegradableCollected + Model.NonbioCollected + Model.RecyclablesCollected) / 1000;
-
 }
 <br />
 <br />
@@ -220,6 +219,12 @@
                     <button class="btn btn-danger ms-3 mb-3" data-bs-toggle="modal" data-bs-target="#unsubscribeModal">
                         Unsubscribe from Email Alerts
                     </button>
+
+                    <!-- New Button for Reporting Missed Garbage Collection -->
+                    <button class="btn btn-warning ms-3 mb-3" data-bs-toggle="modal" data-bs-target="#reportGarbageModal">
+                        Report Missed Garbage Collection
+                    </button>
+
                     <!-- Zone 1 -->
                     <div class="card mb-4">
                         <div class="card-body">
@@ -318,7 +323,77 @@
             </div>
         </div>
     </div>
+</div>
 
+<!-- Modal for Reporting Missed Garbage Collection -->
+<div class="modal fade" id="reportGarbageModal" tabindex="-1" aria-labelledby="reportGarbageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reportGarbageModalLabel">Report Missed Garbage Collection</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="reportGarbageForm" asp-action="ReportGarbage" asp-controller="Home" method="post">
+                    <!-- First Name -->
+                    <div class="mb-3">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="firstName" name="firstName" required placeholder="Enter your first name">
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="mb-3">
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" name="lastName" required placeholder="Enter your last name">
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required placeholder="Enter your email address">
+                    </div>
+
+                    <!-- Puroks Dropdown -->
+                    <div class="mb-3">
+                        <label for="purok" class="form-label">Select Purok</label>
+                        <select class="form-select" id="purok" name="purok" required>
+                            <option value="">-- Select Purok --</option>
+                            <option value="Purok Super Sunlight">Purok Super Sunlight</option>
+                            <option value="Purok Beauty in the Sky">Purok Beauty in the Sky</option>
+                            <option value="Purok Rambo">Purok Rambo</option>
+                            <option value="Purok Butterfly 1">Purok Butterfly 1</option>
+                            <option value="Purok Butterfly 2">Purok Butterfly 2</option>
+                            <option value="Purok Shooting Star">Purok Shooting Star</option>
+                            <option value="Purok Judas Belt">Purok Judas Belt</option>
+                            <option value="Purok Thunder">Purok Thunder</option>
+                            <option value="Purok Five-Star">Purok Five-Star</option>
+                            <option value="Purok Bombshell">Purok Bombshell</option>
+                            <option value="Skina Trigon">Skina Trigon</option>
+                            <option value="Skina Radar">Skina Radar</option>
+                            <option value="Skina Naga">Skina Naga</option>
+                        </select>
+                    </div>
+
+                    <!-- Detailed Address with Google Maps API -->
+                    <div class="mb-3">
+                        <label for="detailedAddress" class="form-label">Detailed Address</label>
+                        <div id="googleMap" style="width: 100%; height: 300px; border: 1px solid #ccc;"></div>
+                        <input type="text" class="form-control mt-2" id="detailedAddress" name="detailedAddress" readonly required placeholder="Click on the map to populate the address">
+                        <input type="hidden" id="latitude" name="latitude">
+                    </div>
+
+                    <!-- Preferred Date and Time -->
+                    <div class="mb-3">
+                        <label for="preferredDatetime" class="form-label">Preferred Date and Time</label>
+                        <input type="datetime-local" class="form-control" id="preferredDatetime" name="preferredDatetime" required>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-success">Submit Report</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Modal for Unsubscribing -->
@@ -393,11 +468,82 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0zahI7hminjL3voy9xXdpV3nJq2p-KjU"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
+<script>
+    let map, marker;
+
+    function initMap() {
+        const defaultLocation = { lat: 10.28300390667682, lng: 123.94622497690234 }; // Default location
+        const addressField = document.getElementById("detailedAddress");
+        const latitudeField = document.getElementById("latitude");
+
+        // Initialize the map
+        map = new google.maps.Map(document.getElementById("googleMap"), {
+            center: { lat: 10.30765, lng: 123.97321 },
+            zoom: 14,
+        });
+
+        // Add a draggable marker
+        marker = new google.maps.Marker({
+            position: { lat: 10.30765, lng: 123.97321 },
+            map: map,
+            draggable: true,
+        });
+
+        // Listen for map clicks
+        google.maps.event.addListener(map, "click", function (event) {
+            const clickedLocation = event.latLng;
+
+            // Update the marker position
+            marker.setPosition(clickedLocation);
+
+            // Get latitude and longitude
+            const lat = clickedLocation.lat();
+            const lng = clickedLocation.lng();
+
+            // Populate hidden latitude field
+            latitudeField.value = `${lat},${lng}`;
+
+            // Use the Geocoder to fetch the address
+            const geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ location: clickedLocation }, (results, status) => {
+                if (status === "OK" && results[0]) {
+                    // Populate the detailedAddress field
+                    addressField.value = results[0].formatted_address;
+                } else {
+                    console.error("Unable to determine address.");
+                    addressField.value = "Address unknown";
+                }
+            });
+        });
+
+        // Enable dragging for the marker to update address and coordinates
+        google.maps.event.addListener(marker, "dragend", function () {
+            const draggedLocation = marker.getPosition();
+            const lat = draggedLocation.lat();
+            const lng = draggedLocation.lng();
+
+            // Populate hidden latitude field
+            latitudeField.value = `${lat},${lng}`;
+
+            // Use the Geocoder to fetch the address
+            const geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ location: draggedLocation }, (results, status) => {
+                if (status === "OK" && results[0]) {
+                    // Populate the detailedAddress field
+                    addressField.value = results[0].formatted_address;
+                } else {
+                    console.error("Unable to determine address.");
+                    addressField.value = "Address unknown";
+                }
+            });
+        });
+    }
+
+
     function initMaps() {
         // Zone 1 Map
         const zone1Map = new google.maps.Map(document.getElementById("zone1Map"), {
-            center: { lat: 10.30765, lng: 123.97321 }, // Center near Zone 1
+            center: { lat: 10.30765, lng: 123.97321 },
             zoom: 14,
         });
         const zone1DirectionsService = new google.maps.DirectionsService();
@@ -421,7 +567,7 @@
 
         // Zone 2 Map
         const zone2Map = new google.maps.Map(document.getElementById("zone2Map"), {
-            center: { lat: 10.306, lng: 123.975 }, // Center near Zone 2
+            center: { lat: 10.306, lng: 123.975 },
             zoom: 14,
         });
         const zone2DirectionsService = new google.maps.DirectionsService();
@@ -447,9 +593,10 @@
                 }
             }
         );
-        // Initialize MRF Map
+
+        // MRF Map
         const mrfMap = new google.maps.Map(document.getElementById("mrfMap"), {
-            center: { lat: 10.274810100615305, lng: 123.94213115079133 }, // Coordinates for MRF at 7WFR+PVJ
+            center: { lat: 10.274810100615305, lng: 123.94213115079133 },
             zoom: 16,
         });
         new google.maps.Marker({
@@ -466,9 +613,9 @@
             },
         });
 
-        // Initialize Landfill/Transfer Station Map
+        // Landfill/Transfer Station Map
         const landfillMap = new google.maps.Map(document.getElementById("landfillMap"), {
-            center: { lat: 10.304658286433977, lng: 123.99667183298469 }, // Coordinates for Landfill at 8X3W+RG6
+            center: { lat: 10.304658286433977, lng: 123.99667183298469 },
             zoom: 16,
         });
         new google.maps.Marker({
@@ -486,8 +633,10 @@
         });
     }
 
-    // Initialize maps when the page loads
-    window.onload = initMaps;
+    document.addEventListener("DOMContentLoaded", () => {
+        // Initialize maps
+        initMap();
+        initMaps();
 
         // Population and Households Chart
         new Chart(document.getElementById('populationHouseholdsChart'), {
@@ -529,14 +678,11 @@
         new Chart(document.getElementById('programsChart'), {
             type: 'bar',
             data: {
-                labels: [
-                    'Recycling Drive Collection',
-                    'E-Waste Collection',
-                ],
+                labels: ['Recycling Drive Collection', 'E-Waste Collection'],
                 datasets: [{
                     label: 'Data',
                     data: [1800, 120],
-                    backgroundColor: ['#2196F3', '#FF9800', '#9C27B0', '#4CAF50']
+                    backgroundColor: ['#2196F3', '#FF9800']
                 }]
             },
             options: {
@@ -551,5 +697,6 @@
                 }
             }
         });
-    </script>
+    });
+</script>
 

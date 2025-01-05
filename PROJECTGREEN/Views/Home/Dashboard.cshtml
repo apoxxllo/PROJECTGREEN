@@ -1,7 +1,29 @@
 ﻿@{
     Layout = "~/Views/Shared/_MainLayout.cshtml";
     ViewData["Title"] = "Babag EcoHub: Dashboard";
+    var adminNote = ViewBag.Announcements as AdminNote;
+    string announcementMessage = "";
+    if (adminNote != null)
+    {
+        announcementMessage = adminNote.Subject + ": " + adminNote.Note;
+    }
 }
+
+<style>
+    .metric-card {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+        .metric-card h5 {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+</style>
 <!-- Carousel Start -->
 <div class="container-fluid carousel-header vh-100 px-0">
     <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
@@ -138,3 +160,95 @@
         </div>
     </div>
 </div>
+
+
+<div class="container about">
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="metric-card">
+                <h5>Top 3 Events Based on Feedback</h5>
+                <ul class="list-group">
+                    @foreach (var eventItem in ViewBag.TopEvents as List<TopEvent>)
+                    {
+                        <li class="list-group-item">
+                            <strong>Event Name:</strong> @eventItem.NameOfEvent<br>
+                            <strong>Average Rating:</strong> @eventItem.AverageStar.Value.ToString("N1") ⭐
+                            <strong>Facebook Link:</strong> <a href="@eventItem.Link.Split(",").FirstOrDefault()" target="_blank">@eventItem.Link.Split(",").FirstOrDefault()</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid about py-5">
+
+    <div class="container mt-5 metric-card">
+        <h2>Incident Frequency (December 2023 - Present)</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Location</th>
+                    <th>Type of Incident</th>
+                    <th>Frequency</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var incident in ViewBag.Incidents as List<IncidentFrequency>)
+                {
+                    <tr>
+                        <td>@incident.Location</td>
+                        <td>@incident.TypeOfIncident</td>
+                        <td>@incident.Frequency</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+@if (announcementMessage != null)
+{
+    <script>
+        $(document).ready(function () {
+            // Trigger the announcement popup if ViewBag.Announcement is not null
+            showAnnouncement('Announcment from Official: @announcementMessage');
+        });
+    </script>
+}
+<div id="announcement-popup" class="announcement-popup">
+    <div class="popup-content">
+        <button id="close-popup" class="close-btn">&times;</button>
+        <p id="announcement-text">This is an announcement message!</p>
+    </div>
+</div>
+
+<script>
+    // Show announcement popup
+    function showAnnouncement(message) {
+        const popup = document.getElementById("announcement-popup");
+        const announcementText = document.getElementById("announcement-text");
+
+        // Set the message for the announcement
+        announcementText.textContent = message;
+
+        // Make the popup appear
+        popup.classList.add("show");
+
+        // Auto hide the popup after 5 seconds
+        setTimeout(() => {
+            popup.classList.remove("show");
+        }, 10000); // Hide after 5 seconds
+    }
+
+    // Close button functionality
+    document.getElementById("close-popup").addEventListener("click", function () {
+        const popup = document.getElementById("announcement-popup");
+        popup.classList.remove("show");
+    });
+
+</script>

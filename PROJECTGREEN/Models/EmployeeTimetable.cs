@@ -5,7 +5,7 @@ namespace PROJECTGREEN.Models;
 
 public partial class EmployeeTimetable
 {
-    public int Int { get; set; }
+    public int Id { get; set; }
 
     public string? Time { get; set; }
 

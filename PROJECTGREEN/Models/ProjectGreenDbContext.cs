@@ -35,11 +35,15 @@ public partial class ProjectGreenDbContext : DbContext
 
     public virtual DbSet<IncidentFeedback> IncidentFeedbacks { get; set; }
 
+    public virtual DbSet<PopulationYear> PopulationYears { get; set; }
+
     public virtual DbSet<Position> Positions { get; set; }
 
     public virtual DbSet<PositionAssignment> PositionAssignments { get; set; }
 
     public virtual DbSet<ProgramFeedback> ProgramFeedbacks { get; set; }
+
+    public virtual DbSet<ReportGarbageCollection> ReportGarbageCollections { get; set; }
 
     public virtual DbSet<RoleWorkSchedule> RoleWorkSchedules { get; set; }
 
@@ -62,6 +66,9 @@ public partial class ProjectGreenDbContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("date");
             entity.Property(e => e.Note).HasColumnName("note");
+            entity.Property(e => e.Subject)
+                .HasMaxLength(50)
+                .HasColumnName("subject");
         });
 
         modelBuilder.Entity<BarangayPosition>(entity =>
@@ -133,11 +140,9 @@ public partial class ProjectGreenDbContext : DbContext
 
         modelBuilder.Entity<EmployeeTimetable>(entity =>
         {
-            entity.HasKey(e => e.Int);
-
             entity.ToTable("EmployeeTimetable");
 
-            entity.Property(e => e.Int).HasColumnName("int");
+            entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.FriTask).HasColumnName("friTask");
             entity.Property(e => e.MondayTask).HasColumnName("mondayTask");
             entity.Property(e => e.ThuTask).HasColumnName("thuTask");
@@ -201,6 +206,15 @@ public partial class ProjectGreenDbContext : DbContext
                 .HasConstraintName("FK_IncidentFeedback_Incidents");
         });
 
+        modelBuilder.Entity<PopulationYear>(entity =>
+        {
+            entity.ToTable("PopulationYear");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Population).HasColumnName("population");
+            entity.Property(e => e.Year).HasColumnName("year");
+        });
+
         modelBuilder.Entity<Position>(entity =>
         {
             entity.ToTable("Position");
@@ -250,6 +264,33 @@ public partial class ProjectGreenDbContext : DbContext
                 .HasForeignKey(d => d.EventId)
                 .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("FK_ProgramFeedbacks_Events");
+        });
+
+        modelBuilder.Entity<ReportGarbageCollection>(entity =>
+        {
+            entity.ToTable("ReportGarbageCollection");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Address).HasColumnName("address");
+            entity.Property(e => e.Date)
+                .HasColumnType("datetime")
+                .HasColumnName("date");
+            entity.Property(e => e.Email)
+                .HasMaxLength(50)
+                .HasColumnName("email");
+            entity.Property(e => e.FirstName)
+                .HasMaxLength(50)
+                .HasColumnName("firstName");
+            entity.Property(e => e.LastName)
+                .HasMaxLength(50)
+                .HasColumnName("lastName");
+            entity.Property(e => e.Lat).HasColumnName("lat");
+            entity.Property(e => e.Purok)
+                .HasMaxLength(50)
+                .HasColumnName("purok");
+            entity.Property(e => e.Status)
+                .HasMaxLength(50)
+                .HasColumnName("status");
         });
 
         modelBuilder.Entity<RoleWorkSchedule>(entity =>

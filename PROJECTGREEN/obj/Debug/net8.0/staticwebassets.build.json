@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "y2CdFFmPSDX6LlnxAgeZqj/a2gna5PSih5D2KpjG218=",
+  "Hash": "xBsuPveDEuOARJb80YhTRld4/7coGCg4RbUmMjALuOk=",
   "Source": "PROJECTGREEN",
   "BasePath": "_content/PROJECTGREEN",
   "Mode": "Default",
@@ -33132,6 +33132,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Attachments\\bering.png"
+    },
+    {
+      "Identity": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\wwwroot\\Attachments\\harry.jpg",
+      "SourceId": "PROJECTGREEN",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\wwwroot\\",
+      "BasePath": "_content/PROJECTGREEN",
+      "RelativePath": "Attachments/harry.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Attachments\\harry.jpg"
     },
     {
       "Identity": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\wwwroot\\Attachments\\manayon.png",

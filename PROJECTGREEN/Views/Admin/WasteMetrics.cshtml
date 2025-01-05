@@ -1,0 +1,416 @@
+﻿@model AdminViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Babag EcoHub: Waste Metrics";
+    var totalWasteCollected = Model.Volume.BiodegradableCollected + Model.Volume.NonbioCollected + Model.Volume.RecyclablesCollected;
+    var totalWasteCollectedInTons = (Model.Volume.BiodegradableCollected + Model.Volume.NonbioCollected + Model.Volume.RecyclablesCollected) / 1000;
+}
+<style>
+    .metric-card {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+        .metric-card h5 {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+    .badge {
+        font-size: 14px;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .badge-success {
+        background: #4CAF50;
+        color: white;
+    }
+
+    .badge-warning {
+        background: #FF9800;
+        color: white;
+    }
+
+    .badge-danger {
+        background: #F44336;
+        color: white;
+    }
+</style>
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+    <br />
+
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success" style="border-radius: 0;" role="alert">
+            @TempData["message"]
+        </div>
+    }
+    @if (TempData["error"] != null)
+    {
+        <div class="alert alert-danger" style="border-radius: 0;" role="alert">
+            @TempData["error"]
+        </div>
+    }
+    <div class="accordion" id="wasteMetricsAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="metricsHeading">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMetrics" aria-expanded="true" aria-controls="collapseMetrics">
+                    Waste Collection Metrics
+                </button>
+            </h2>
+            <div id="collapseMetrics" class="accordion-collapse collapse show" aria-labelledby="metricsHeading">
+                <div class="accordion-body">
+                    <div class="row">
+                        <!-- Total Waste Collected -->
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5>Total Waste Collected</h5>
+                                <p>
+                                    <span class="badge badge-success">
+                                        @totalWasteCollected.Value.ToString("N0") kg (@totalWasteCollectedInTons.Value.ToString("N2") tons)
+                                    </span>
+                                </p>
+                                <small class="text-muted">Estimated at 20,045 kg/day waste generation rate.</small>
+                                <br />
+                            </div>
+                        </div>
+
+                        <!-- Biodegradable Waste -->
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5>Biodegradable Waste</h5>
+                                <p>
+                                    <span class="badge badge-success">
+                                        @Model.Volume.BiodegradableCollected.Value.ToString("N0") kg (@(((double)Model.Volume.BiodegradableCollected / (double)totalWasteCollected * 100.0).ToString("N2"))%)
+                                    </span>
+                                </p>
+                                <small class="text-muted">
+                                    @(((double)Model.Volume.BiodegradableCollected / (double)totalWasteCollected * 100.0).ToString("N2"))% of total waste collected.
+                                </small>
+                                <br />
+
+                                <button class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#editBiodegradableWasteModal">Edit</button>
+                            </div>
+                        </div>
+
+                        <!-- Non-Biodegradable Waste -->
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5>Non-Biodegradable Waste</h5>
+                                <p>
+                                    <span class="badge badge-danger">
+                                        @Model.Volume.NonbioCollected.Value.ToString("N0") kg (@(((double)Model.Volume.NonbioCollected / (double)totalWasteCollected * 100.0).ToString("N2"))%)
+                                    </span>
+                                </p>
+                                <small class="text-muted">
+                                    @(((double)Model.Volume.NonbioCollected / (double)totalWasteCollected * 100.0).ToString("N2"))% of total waste collected.
+                                </small>
+                                <br />
+
+                                <button class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#editNonbioWasteModal">Edit</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!-- Recyclables Collected -->
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5>Recyclables Collected</h5>
+                                <p>
+                                    <span class="badge badge-warning">
+                                        @Model.Volume.RecyclablesCollected.Value.ToString("N2") kg (@(((double)Model.Volume.RecyclablesCollected / (double)totalWasteCollected * 100.0).ToString("N2"))%)
+                                    </span>
+                                </p>
+                                <small class="text-muted">
+                                    @(((double)Model.Volume.RecyclablesCollected / (double)totalWasteCollected * 100.0).ToString("N2"))% of total waste collected.
+                                </small>
+                                <br />
+
+                                <button class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#editRecyclablesCollectedModal">Edit</button>
+                            </div>
+                        </div>
+
+                        <!-- Recycling Success Rate -->
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5>Recycling Success Rate</h5>
+                                <p>
+                                    <span class="badge badge-success">
+                                        @(((double)Model.Volume.MonthlyRecycled / (double)Model.Volume.RecyclablesCollected * 100.0).ToString("N2"))%
+                                    </span>
+                                </p>
+                                <small class="text-muted">Percentage of recyclables processed for reuse.</small>
+                                <br />
+                            </div>
+                        </div>
+
+                        <!-- Monthly Recycled Volume -->
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5>Monthly Recycled Volume</h5>
+                                <p>
+                                    <span class="badge badge-success">
+                                        @Model.Volume.MonthlyRecycled.Value.ToString("N0") kg
+                                    </span>
+                                </p>
+                                <small class="text-muted">
+                                    (@(((double)Model.Volume.MonthlyRecycled / (double)Model.Volume.RecyclablesCollected * 100.0).ToString("N2"))%) of recyclables collected.
+                                </small>
+                                <button class="btn btn-primary btn-sm mt-3" data-bs-toggle="modal" data-bs-target="#editMonthlyRecycledModal">Edit</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row for Other Metrics -->
+                    <div class="row">
+                        <!-- Uncollected Waste -->
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5>Uncollected Waste</h5>
+                                <p>
+                                    <span class="badge badge-danger">
+                                        @Model.Volume.UncollectedWaste.Value.ToString("N0") kg (@(((double)Model.Volume.UncollectedWaste / (double)totalWasteCollected * 100.0).ToString("N2"))%)
+                                    </span>
+                                </p>
+                                <small class="text-muted">Due to improper disposal or lack of access.</small>
+                                <br />
+
+                                <button class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#editUncollectedWasteModal">Edit</button>
+                            </div>
+                        </div>
+
+                        <!-- E-Waste Recycled -->
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5>E-Waste Recycled</h5>
+                                <p>
+                                    <span class="badge badge-warning">
+                                        @Model.Volume.EwasteRecycled.Value.ToString("N0") kg
+                                    </span>
+                                </p>
+                                <small class="text-muted">Collected via community drives.</small>
+                                <button class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#editEwasteRecycledModal">Edit</button>
+                            </div>
+                        </div>
+
+                        <!-- MRF Processing Capacity -->
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5>MRF Processing Capacity</h5>
+                                <p>
+                                    <span class="badge badge-success">
+                                        @Model.Volume.MrfProcessingCapacity.Value.ToString("N0") tons/month
+                                    </span>
+                                </p>
+                                <small class="text-muted">Materials Recovery Facility capacity.</small>
+                                <button class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#editMrfProcessingCapacityModal">Edit</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modals for Editing -->
+<!-- Biodegradable Waste Modal -->
+<div class="modal fade" id="editBiodegradableWasteModal" tabindex="-1" aria-labelledby="editBiodegradableWasteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editBiodegradableWasteModalLabel">Edit Biodegradable Waste</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" action="/Admin/UpdateBiodegradableWaste">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="biodegradableWaste">Biodegradable Waste (kg)</label>
+                        <input type="number" step="0.01" class="form-control" id="biodegradableWaste" name="BiodegradableWaste" value="@Model.Volume.BiodegradableCollected" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modals for Editing Metrics -->
+<!-- Non-Biodegradable Waste Modal -->
+<div class="modal fade" id="editNonbioWasteModal" tabindex="-1" aria-labelledby="editNonbioWasteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editNonbioWasteModalLabel">Edit Non-Biodegradable Waste</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" action="/Admin/UpdateNonBiodegradableWaste">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="nonbioWaste">Non-Biodegradable Waste (kg)</label>
+                        <input type="number" step="0.01" class="form-control" id="nonbioWaste" name="NonBiodegradableWaste" value="@Model.Volume.NonbioCollected">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Recyclables Collected Modal -->
+<div class="modal fade" id="editRecyclablesCollectedModal" tabindex="-1" aria-labelledby="editRecyclablesCollectedModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editRecyclablesCollectedModalLabel">Edit Recyclables Collected</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" action="/Admin/UpdateRecyclablesCollected">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="recyclablesCollected">Recyclables Collected (kg)</label>
+                        <input type="number" step="0.01" class="form-control" id="recyclablesCollected" name="RecyclablesCollected" value="@Model.Volume.RecyclablesCollected">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Recycling Success Rate Modal -->
+<div class="modal fade" id="editRecyclingSuccessRateModal" tabindex="-1" aria-labelledby="editRecyclingSuccessRateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editRecyclingSuccessRateModalLabel">Edit Recycling Success Rate</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" action="/Admin/UpdateRecyclingSuccessRate">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="recyclingSuccessRate">Recycling Success Rate (%)</label>
+                        <input type="number" step="0.01" class="form-control" id="recyclingSuccessRate" name="RecyclingSuccessRate" value="@(((double)Model.Volume.MonthlyRecycled / (double)Model.Volume.RecyclablesCollected * 100.0).ToString("N2"))">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Monthly Recycled Modal -->
+<div class="modal fade" id="editMonthlyRecycledModal" tabindex="-1" aria-labelledby="editMonthlyRecycledModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editMonthlyRecycledModalLabel">Edit Monthly Recycled Volume</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" action="/Admin/UpdateMonthlyRecycled">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="monthlyRecycled">Monthly Recycled Volume (kg)</label>
+                        <input type="number" step="0.01" class="form-control" id="monthlyRecycled" name="MonthlyRecycled" value="@Model.Volume.MonthlyRecycled">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Uncollected Waste Modal -->
+<div class="modal fade" id="editUncollectedWasteModal" tabindex="-1" aria-labelledby="editUncollectedWasteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editUncollectedWasteModalLabel">Edit Uncollected Waste</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" action="/Admin/UpdateUncollectedWaste">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="uncollectedWaste">Uncollected Waste (kg)</label>
+                        <input type="number" step="0.01" class="form-control" id="uncollectedWaste" name="UncollectedWaste" value="@Model.Volume.UncollectedWaste">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Ewaste Recycled Modal -->
+<div class="modal fade" id="editEwasteRecycledModal" tabindex="-1" aria-labelledby="editEwasteRecycledModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editEwasteRecycledModalLabel">Edit E-Waste Recycled</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" action="/Admin/UpdateEwasteRecycled">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="ewasteRecycled">E-Waste Recycled (kg)</label>
+                        <input type="number" step="0.01" class="form-control" id="ewasteRecycled" name="EwasteRecycled" value="@Model.Volume.EwasteRecycled">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- MRF Processing Capacity Modal -->
+<div class="modal fade" id="editMrfProcessingCapacityModal" tabindex="-1" aria-labelledby="editMrfProcessingCapacityModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editMrfProcessingCapacityModalLabel">Edit MRF Processing Capacity</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" action="/Admin/UpdateMrfProcessingCapacity">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="mrfProcessingCapacity">MRF Processing Capacity (tons/month)</label>
+                        <input type="number" step="0.01" class="form-control" id="mrfProcessingCapacity" name="MrfProcessingCapacity" value="@Model.Volume.MrfProcessingCapacity">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

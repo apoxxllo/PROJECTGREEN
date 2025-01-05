@@ -134,13 +134,32 @@
                     <form asp-action="ReportIncident" asp-controller="Home">
                         <div class="mb-3">
                             <label for="incidentType" class="form-label">Incident Type</label>
-                            <select class="form-select" id="incidentType" name="type">
+                            <select class="form-select" id="incidentType" name="type" required>
                                 <option value="Fire">Fire</option>
                                 <option value="Illegal Dumping">Illegal Dumping</option>
                                 <option value="Burning of Waste">Burning of Waste</option>
                                 <option value="Flooding">Flooding</option>
                                 <option value="Road Traffic">Road Traffic</option>
                             </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="purok" class="form-label">Select Purok</label>
+                            <select class="form-select" id="purok" name="purok">
+                                <option value="Purok Super Sunlight">Purok Super Sunlight</option>
+                                <option value="Purok Beauty in the Sky">Purok Beauty in the Sky</option>
+                                <option value="Purok Rambo">Purok Rambo</option>
+                                <option value="Purok Butterfly 1">Purok Butterfly 1</option>
+                                <option value="Purok Butterfly 2">Purok Butterfly 2</option>
+                                <option value="Purok Shooting Star">Purok Shooting Star</option>
+                                <option value="Purok Judas Belt">Purok Judas Belt</option>
+                                <option value="Purok Thunder">Purok Thunder</option>
+                                <option value="Purok Five-Star">Purok Five-Star</option>
+                                <option value="Purok Bombshell">Purok Bombshell</option>
+                                <option value="Skina Trigon">Skina Trigon</option>
+                                <option value="Skina Radar">Skina Radar</option>
+                                <option value="Skina Naga">Skina Naga</option>
+                            </select>
+
                         </div>
                         <div class="mb-3">
                             <label for="incidentDateTime" class="form-label">Date & Time</label>

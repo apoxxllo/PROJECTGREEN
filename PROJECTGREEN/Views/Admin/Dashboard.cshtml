@@ -49,7 +49,7 @@
 
     <div class="row">
         <!-- Population Overview -->
-        <div class="col-md-6 mb-4">
+        <div class="col-md-12 mb-4">
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title text-dark">Population Overview</h5>
@@ -57,15 +57,7 @@
                 </div>
             </div>
         </div>
-        <!-- Programs Feedback -->
-        <div class="col-md-6 mb-4">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title text-dark">Programs Feedback</h5>
-                    <canvas id="programsFeedbackChart"></canvas>
-                </div>
-            </div>
-        </div>
+
         <div class="accordion-body">
             <div class="row">
                 <div class="col-md-4">
@@ -161,7 +153,7 @@
         </div>
     </div>
     <div class="container mt-5 metric-card">
-        <h2>Incident Frequency (December 2023 - December 2024)</h2>
+        <h2>Incident Frequency (December 2023 - PRESENT)</h2>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -214,29 +206,4 @@
         }
     });
 
-    // Programs Feedback Data
-    const feedbackCtx = document.getElementById('programsFeedbackChart').getContext('2d');
-    const programsFeedbackChart = new Chart(feedbackCtx, {
-        type: 'radar',
-        data: {
-            labels: ['Clean-up Drive', 'Feeding Program', 'Tree Planting', 'Road Repair', 'Health Check-up'],
-            datasets: [{
-                label: 'Feedback Score',
-                data: [4.5, 4.0, 4.8, 4.3, 4.6],
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: { display: false },
-                title: { display: true, text: 'Programs Feedback (Avg. Rating)' }
-            },
-            scales: {
-                r: { beginAtZero: true }
-            }
-        }
-    });
 </script>
