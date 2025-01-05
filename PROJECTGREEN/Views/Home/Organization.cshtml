@@ -1,4 +1,428 @@
 ﻿@{
     Layout = "~/Views/Shared/_MainLayout.cshtml";
     ViewData["Title"] = "Babag EcoHub: Organization";
+    var captain = ViewBag.Captain as User;
+    var sec = ViewBag.Secretary as User;
+    var treasurer = ViewBag.Treasurer as User;
+    var councilors = ViewBag.Councilors as IEnumerable<User>;
+    var skCouncilors = ViewBag.SkCouncilors as IEnumerable<User>;
+    var skChairman = ViewBag.SkChairman as User;
+    var skSecretary = ViewBag.SkSecretary as User;
+    var skTreasurer = ViewBag.SkTreasurer as User;
 }
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<style>
+    .bg-light {
+        background-color: #f9f9f9;
+        /* border: 1px solid #e0e0e0; */
+    }
+
+    h2.text-success {
+        font-family: 'Arial Black', sans-serif;
+        text-shadow: 1px 1px 5px rgba(0, 128, 0, 0.2);
+    }
+
+    h3.text-primary {
+        font-family: 'Georgia', serif;
+        color: #007bff;
+        text-shadow: 1px 1px 3px rgba(0, 0, 255, 0.1);
+    }
+
+    .list-group-item {
+        font-family: 'Verdana', sans-serif;
+        font-size: 16px;
+        background-color: #fff;
+        border: none;
+        padding: 12px 15px;
+        margin: 5px 0;
+        border-radius: 8px;
+        box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.05);
+    }
+
+        .list-group-item strong {
+            color: #333;
+            font-weight: bold;
+        }
+
+    .shadow {
+        box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .text-center {
+        margin-bottom: 20px;
+    }
+
+    body {
+        background: #7bc875;
+    }
+
+    .official-card {
+        display: flex;
+        align-items: center;
+        background: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+        .official-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: black 0.5px solid;
+        }
+
+        .official-card h4 {
+            margin: 0;
+        }
+
+        .official-card p {
+            margin: 0;
+        }
+
+    .captain-img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border: 3px solid #007bff;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        margin-bottom: 15px;
+    }
+    /* General Styles for Organizational Chart */
+.org-chart {
+    text-align: center;
+}
+
+.position-box {
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.position-box img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.position-top {
+    margin-bottom: 30px;
+}
+
+.position-councilors,
+.position-secretary-treasurer,
+.position-sk {
+    margin-top: 20px;
+}
+
+.position-councilors h5,
+.position-secretary-treasurer h5,
+.position-sk h5 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.position-councilors .row,
+.position-secretary-treasurer .row {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+}
+
+.position-councilors .col-4,
+.position-secretary-treasurer .col-6 {
+    display: flex;
+    justify-content: center;
+}
+
+.position-box p {
+    font-size: 1rem;
+    margin-top: 8px;
+}
+
+/* Mobile responsiveness */
+@@media (max-width: 768px) {
+    .position-councilors .row,
+    .position-secretary-treasurer .row {
+        flex-direction: column;
+    }
+
+    .position-councilors .col-4,
+    .position-secretary-treasurer .col-6 {
+        margin-bottom: 10px;
+    }
+}
+
+</style>
+
+<div class="container my-5" style="background: #f4f4f4; border-radius: 40px; padding-top: 20px;">
+    <div class="text-center">
+        <h1 class="display-4">Babag EcoHub: Organization</h1>
+        <p class="lead">Highlighting Barangay Officials and Their Roles in Green Initiatives</p>
+    </div>
+    <div class="bg-light p-4 mb-4 rounded shadow">
+        <div class="text-center">
+            <img src="@captain.ProfilePicPath"
+                 alt="captainPic"
+                 class="rounded-circle mb-3 captain-img"
+                 onerror="this.onerror=null;this.src='/images/defaultProfile.jpg';">
+            <h2 class="text-success fw-bold">Punong Barangay</h2>
+            <h3 class="text-primary">Hon. @captain.FirstName @captain.LastName</h3>
+        </div>
+        <div class="mt-3">
+            <h4 class="text-primary">Responsibilities:</h4>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <strong>Policy Formulation and Implementation:</strong> Develop and enforce barangay ordinances promoting environmental sustainability, such as proper waste segregation, recycling programs, and tree-planting activities.
+                </li>
+                <li class="list-group-item">
+                    <strong>Resource Allocation:</strong> Ensure sufficient budget allocation for environmental programs, such as funding for waste management facilities, eco-friendly infrastructure, and community education campaigns.
+                </li>
+                <li class="list-group-item">
+                    <strong>Leadership in Environmental Committees:</strong> Spearhead and provide oversight for committees dedicated to environmental protection, such as the Committee on Solid Waste Management and Environmental Protection.
+                </li>
+                <li class="list-group-item">
+                    <strong>Public Awareness and Engagement:</strong> Lead efforts to educate the community on the importance of environmental conservation through seminars, information campaigns, and collaboration with schools and civic organizations.
+                </li>
+                <li class="list-group-item">
+                    <strong>Collaboration with Stakeholders:</strong> Partner with government agencies, private organizations, and NGOs to implement green initiatives and access funding or technical support.
+                </li>
+                <li class="list-group-item">
+                    <strong>Monitoring and Evaluation:</strong> Oversee the implementation of green initiatives and regularly assess their impact, ensuring programs meet sustainability goals and address community needs effectively.
+                </li>
+                <li class="list-group-item">
+                    <strong>Disaster Preparedness and Environmental Resilience:</strong> Incorporate climate adaptation and mitigation strategies into community planning to protect the environment and reduce risks from natural disasters.
+                </li>
+                <li class="list-group-item">
+                    <strong>Encouraging Eco-Friendly Practices:</strong> Promote the use of renewable energy, reduction of plastic usage, and adoption of sustainable livelihood projects to minimize environmental impact.
+                </li>
+                <li class="list-group-item">
+                    <strong>Conflict Resolution:</strong> Mediate disputes arising from environmental policies, such as land use or waste disposal, ensuring peaceful and constructive resolutions.
+                </li>
+                <li class="list-group-item">
+                    <strong>Role Model for the Community:</strong> Serve as a model for eco-friendly living, actively participating in green initiatives to inspire and motivate constituents.
+                </li>
+            </ul>
+        </div>
+
+        <!-- Button to open the organizational chart modal -->
+        <div class="text-center mt-4">
+            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#orgChartModal">
+                View Organizational Chart
+            </button>
+        </div>
+    </div>
+
+    <div class="accordion mt-5" id="parentAccordion">
+        <!-- Parent Accordion: Committees -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="committeesHeading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#committeesCollapse" aria-expanded="false" aria-controls="committeesCollapse">
+                    Committees
+                </button>
+            </h2>
+            <div id="committeesCollapse" class="accordion-collapse collapse" aria-labelledby="committeesHeading" data-bs-parent="#parentAccordion">
+                <div class="accordion-body">
+                    <div class="accordion" id="committeeAccordion">
+                        <!-- Child Accordion: Committees -->
+                        @for (int i = 1; i <= 10; i++)
+                        {
+                            var committees = ViewData[$"Committees{i}"] as IEnumerable<CommitteeAssignment>;
+                            if (committees != null && committees.Any())
+                            {
+                                var committeeName = committees.FirstOrDefault().Committee.CommitteeName;
+                                var uniqueId = $"committee{i}"; // Ensure unique IDs
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="@($"{uniqueId}Heading")">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#@uniqueId" aria-expanded="false" aria-controls="@uniqueId">
+                                            @committeeName
+                                        </button>
+                                    </h2>
+                                    <div id="@uniqueId" class="accordion-collapse collapse" aria-labelledby="@($"{uniqueId}Heading")" data-bs-parent="#committeeAccordion">
+                                        <div class="accordion-body">
+                                            @foreach (var committee in committees)
+                                            {
+                                                <div class="official-card">
+                                                    <img src="@committee.User.ProfilePicPath" alt="Profile of Hon. @committee.User.FirstName @committee.User.LastName" onerror="this.onerror=null;this.src='/images/defaultProfile.jpg';">
+                                                    <div>
+                                                        <h4>Hon. @committee.User.FirstName @committee.User.LastName</h4>
+                                                        <p><strong>Role:</strong> @committee.Committee.RoleInGreenInitiatives</p>
+                                                    </div>
+                                                </div>
+                                            }
+
+                                            <div class="mt-4">
+                                                <p><strong>Responsibilities:</strong> @committees.FirstOrDefault().Committee.Responsibilities</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- Employees Accordion -->
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="employeesHeading">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#employeesCollapse" aria-expanded="false" aria-controls="employeesCollapse">
+                Employees Involved in Waste Management and Their Responsibilities
+            </button>
+        </h2>
+        <div id="employeesCollapse" class="accordion-collapse collapse" aria-labelledby="employeesHeading" data-bs-parent="#parentAccordion">
+            <div class="accordion-body">
+                <div class="accordion" id="employeesAccordion">
+                    @for (int i = 1; i <= 10; i++)
+                    {
+                        var employees = ViewData[$"Position{i}"] as IEnumerable<PositionAssignment>; // Example ViewData key
+                        if (employees != null && employees.Any())
+                        {
+                            var positionName = employees.FirstOrDefault().Position.PositionName;
+                            var uniqueId = $"position{i}";
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="@($"{uniqueId}Heading")">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#@uniqueId" aria-expanded="false" aria-controls="@uniqueId">
+                                        @positionName
+                                    </button>
+                                </h2>
+                                <div id="@uniqueId" class="accordion-collapse collapse" aria-labelledby="@($"{uniqueId}Heading")" data-bs-parent="#employeesAccordion">
+                                    <div class="accordion-body">
+                                        @foreach (var employee in employees)
+                                        {
+                                            <div class="official-card">
+                                                <img src="@employee.User.ProfilePicPath" alt="Profile of @employee.User.FirstName @employee.User.LastName" onerror="this.onerror=null;this.src='/images/defaultProfile.jpg';">
+                                                <div>
+                                                    <h4>@employee.User.FirstName @employee.User.LastName</h4>
+                                                    <p><strong>Responsibilities:</strong> @employee.Position.Responsibilities</p>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+
+    <div class="text-center mt-5">
+        <p class="text-muted">Prepared by Barangay Babag EcoHub Committee</p>
+    </div>
+</div>
+
+<!-- Modal for Organizational Chart -->
+<div class="modal fade" id="orgChartModal" tabindex="-1" aria-labelledby="orgChartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="orgChartModalLabel">Organizational Chart</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="org-chart">
+                    <div class="position-box position-top">
+                        <img src="@captain.ProfilePicPath" class="rounded-circle" alt="Punong Barangay" onerror="this.onerror=null;this.src='/images/defaultProfile.jpg';">
+                        <h5>Punong Barangay</h5>
+                        <p>Hon. @captain.FirstName @captain.LastName</p>
+                    </div>
+
+                    <div class="position-box position-councilors">
+                        <h5>Councilors</h5>
+                        <div class="row">
+                            @foreach (var councilor in councilors)
+                            {
+                                <div class="col-4">
+                                    <div class="position-box">
+                                        <img src="@councilor.ProfilePicPath" class="rounded-circle" alt="Councilor" onerror="this.onerror=null;this.src='/images/defaultProfile.jpg';">
+                                        <p>@councilor.FirstName @councilor.LastName</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="position-box position-secretary-treasurer">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <h5>Barangay Secretary</h5>
+                                <div class="position-box">
+                                    <img src="@sec.ProfilePicPath" class="rounded-circle" alt="Secretary" onerror="this.onerror=null;this.src='/images/defaultProfile.jpg';">
+                                    <p>@sec.FirstName @sec.LastName</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <h5>Barangay Treasurer</h5>
+                                <div class="position-box">
+                                    <img src="@treasurer.ProfilePicPath" class="rounded-circle" alt="Treasurer" onerror="this.onerror=null;this.src='/images/defaultProfile.jpg';">
+                                    <p>@treasurer.FirstName @treasurer.LastName</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="position-box position-sk">
+                        <h5>SK Leadership</h5>
+                        <div class="row">
+                            <div class="col-6">
+                                <h6>SK Chairman</h6>
+                                <div class="position-box">
+                                    <img src="@skChairman.ProfilePicPath" class="rounded-circle" alt="SK Chairman" onerror="this.onerror=null;this.src='/images/defaultProfile.jpg';">
+                                    <p>@skChairman.FirstName @skChairman.LastName</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <h6>SK Secretary</h6>
+                                <div class="position-box">
+                                    <img src="@skSecretary.ProfilePicPath" class="rounded-circle" alt="SK Secretary" onerror="this.onerror=null;this.src='/images/defaultProfile.jpg';">
+                                    <p>@skSecretary.FirstName @skSecretary.LastName</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h5>SK Councilors</h5>
+                        <div class="row">
+                            @foreach (var skCouncilor in skCouncilors)
+                            {
+                                <div class="col-4">
+                                    <div class="position-box">
+                                        <img src="@skCouncilor.ProfilePicPath" class="rounded-circle" alt="SK Councilor" onerror="this.onerror=null;this.src='/images/defaultProfile.jpg';">
+                                        <p>@skCouncilor.FirstName @skCouncilor.LastName</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <h5>SK Treasurer</h5>
+                        <div class="position-box">
+                            <img src="@skTreasurer.ProfilePicPath" class="rounded-circle" alt="SK Treasurer" onerror="this.onerror=null;this.src='/images/defaultProfile.jpg';">
+                            <p>@skTreasurer.FirstName @skTreasurer.LastName</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

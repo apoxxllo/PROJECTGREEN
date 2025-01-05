@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var profilePicPath = User.Claims
+                            .FirstOrDefault(c => c.Type == "ProfilePictureUrl" && c.Issuer == "projectgreen")?.Value;
+}
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -36,10 +40,10 @@
                     </button>
                 </div>
                 <div>
-                    <a class="navbar-brand brand-logo" href="~/Admin/Index" style="font-size: 20px; font-weight: bolder; color: green;">
+                    <a class="navbar-brand brand-logo" href="~/Admin/Dashboard" style="font-size: 20px; font-weight: bolder; color: green;">
                         Babag EcoHub
                     </a>
-                    <a class="navbar-brand brand-logo-mini" href="~/Admin/Index">
+                    <a class="navbar-brand brand-logo-mini" href="~/Admin/Dashboard">
                         <img src="~/AdminLayout/images/logo-mini.svg" alt="logo" />
                     </a>
                 </div>
@@ -58,85 +62,21 @@
                             <input type="search" class="form-control" placeholder="Search Here" title="Search here">
                         </form>
                     </li>
+
+                    <!-- Profile dropdown -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
-                            <i class="icon-mail icon-lg"></i>
+                        <a class="nav-link count-indicator" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="@profilePicPath" alt="Profile Picture" class="img-xs rounded-circle" />
+                            <span class="fw-bold ms-2">@User.Identity.Name</span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="notificationDropdown">
-                            <a class="dropdown-item py-3 border-bottom">
-                                <p class="mb-0 font-weight-medium float-left">You have 4 new notifications </p>
-                                <span class="badge badge-pill badge-primary float-right">View all</span>
-                            </a>
-                            <a class="dropdown-item preview-item py-3">
-                                <div class="preview-thumbnail">
-                                    <i class="mdi mdi-alert m-auto text-primary"></i>
-                                </div>
-                                <div class="preview-item-content">
-                                    <h6 class="preview-subject fw-normal text-dark mb-1">Application Error</h6>
-                                    <p class="fw-light small-text mb-0"> Just now </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item py-3">
-                                <div class="preview-thumbnail">
-                                    <i class="mdi mdi-settings m-auto text-primary"></i>
-                                </div>
-                                <div class="preview-item-content">
-                                    <h6 class="preview-subject fw-normal text-dark mb-1">Settings</h6>
-                                    <p class="fw-light small-text mb-0"> Private message </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item py-3">
-                                <div class="preview-thumbnail">
-                                    <i class="mdi mdi-airballoon m-auto text-primary"></i>
-                                </div>
-                                <div class="preview-item-content">
-                                    <h6 class="preview-subject fw-normal text-dark mb-1">New user registration</h6>
-                                    <p class="fw-light small-text mb-0"> 2 days ago </p>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="icon-bell"></i>
-                            <span class="count"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="countDropdown">
-                            <a class="dropdown-item py-3">
-                                <p class="mb-0 font-weight-medium float-left">You have 7 unread mails </p>
-                                <span class="badge badge-pill badge-primary float-right">View all</span>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <img src="images/faces/face10.jpg" alt="image" class="img-sm profile-pic">
-                                </div>
-                                <div class="preview-item-content flex-grow py-2">
-                                    <p class="preview-subject ellipsis font-weight-medium text-dark">Marian Garner </p>
-                                    <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <img src="images/faces/face12.jpg" alt="image" class="img-sm profile-pic">
-                                </div>
-                                <div class="preview-item-content flex-grow py-2">
-                                    <p class="preview-subject ellipsis font-weight-medium text-dark">David Grey </p>
-                                    <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <img src="images/faces/face1.jpg" alt="image" class="img-sm profile-pic">
-                                </div>
-                                <div class="preview-item-content flex-grow py-2">
-                                    <p class="preview-subject ellipsis font-weight-medium text-dark">Travis Jenkins </p>
-                                    <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
-                                </div>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="profileDropdown">
+                            <a class="dropdown-item py-3" href="~/Account/Logout">
+                                <p class="mb-0 font-weight-medium">Log out</p>
                             </a>
                         </div>
                     </li>
                 </ul>
+
                 <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-bs-toggle="offcanvas">
                     <span class="mdi mdi-menu"></span>
                 </button>
@@ -318,20 +258,20 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="~/Admin/Index">
+                        <a class="nav-link" href="~/Admin/Dashboard" style="background: none !important;">
                             <i class="mdi mdi-grid-large menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts" style="background: none !important;">
                             <i class="menu-icon mdi mdi-delete"></i>
                             <span class="menu-title">Waste Management</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="charts">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="~/Admin/WasteOverview">Overview</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="~/Admin/WasteMetrics">Metrics</a></li>
                             </ul>
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="~/Admin/MapsCollection">Maps for Waste Collection</a></li>
@@ -339,52 +279,67 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#org" aria-expanded="false" aria-controls="org">
-                            <i class="menu-icon mdi  mdi-account-network"></i>
+                        <a class="nav-link" data-bs-toggle="collapse" href="#org" aria-expanded="false" aria-controls="org" style="background: none !important;">
+                            <i class="menu-icon mdi mdi-account-network"></i>
                             <span class="menu-title">Organizational Chart</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="org">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="~/Admin/Instructors">Instructors</a></li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="~/Admin/GreenInitiativesRoles">Roles in Green Initiatives</a>
+                                </li>
                             </ul>
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="~/Admin/Students">Students</a></li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="~/Admin/Students">Employees Responsibilities</a>
+                                </li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#emp" aria-expanded="false" aria-controls="emp">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#emp" aria-expanded="false" aria-controls="emp" style="background: none !important;">
                             <i class="menu-icon mdi mdi-account-circle-outline"></i>
                             <span class="menu-title">Employees Schedule</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="emp">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="~/Admin/Instructors">Overview</a></li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="~/Admin/GreenInitiativesSchedule">Green Initiatives Schedules</a>
+                                </li>
                             </ul>
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="~/Admin/Students">Maps for Waste Collection</a></li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="~/Admin/EmployeeTimetable">Employee Timetable</a>
+                                </li>
                             </ul>
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="~/Admin/Programs">Community Programs</a>
+                                </li>
+                            </ul>
+
                         </div>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#incident" aria-expanded="false" aria-controls="incident">
-                            <i class="menu-icon mdi  mdi-account-network"></i>
+                        <a class="nav-link" data-bs-toggle="collapse" href="#incident" aria-expanded="false" aria-controls="incident" style="background: none !important;">
+                            <i class="menu-icon mdi mdi-account-network"></i>
                             <span class="menu-title">Incident Recording</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="incident">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="~/Admin/Instructors">Instructors</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="~/Admin/PendingIncidents">Pending Incidents</a></li>
                             </ul>
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="~/Admin/Students">Students</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="~/Admin/Students">All Incidents</a></li>
                             </ul>
                         </div>
                     </li>
                 </ul>
+
             </nav>
             <!-- partial -->
             <div class="main-panel">

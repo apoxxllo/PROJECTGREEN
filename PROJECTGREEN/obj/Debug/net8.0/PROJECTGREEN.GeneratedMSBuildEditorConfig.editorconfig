@@ -34,12 +34,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/jilab/OneDrive/Documents/GitHub/PROJECTGREEN/PROJECTGREEN/Views/Home/CommunityInvolvementPrograms.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb21tdW5pdHlJbnZvbHZlbWVudFByb2dyYW1zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/jilab/OneDrive/Documents/GitHub/PROJECTGREEN/PROJECTGREEN/Views/Home/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEYXNoYm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jilab/OneDrive/Documents/GitHub/PROJECTGREEN/PROJECTGREEN/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[C:/Users/jilab/OneDrive/Documents/GitHub/PROJECTGREEN/PROJECTGREEN/Views/Home/EmployeeTimetable.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFbXBsb3llZVRpbWV0YWJsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jilab/OneDrive/Documents/GitHub/PROJECTGREEN/PROJECTGREEN/Views/Home/EmployeeWorkSchedules.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFbXBsb3llZVdvcmtTY2hlZHVsZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jilab/OneDrive/Documents/GitHub/PROJECTGREEN/PROJECTGREEN/Views/Home/Incidents.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmNpZGVudHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/jilab/OneDrive/Documents/GitHub/PROJECTGREEN/PROJECTGREEN/Views/Home/Organization.cshtml]

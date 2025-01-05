@@ -17,5 +17,7 @@ public partial class ProgramFeedback
 
     public string? LastName { get; set; }
 
+    public DateTime? SubmittedAt { get; set; }
+
     public virtual Event? Event { get; set; }
 }

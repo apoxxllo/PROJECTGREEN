@@ -43,7 +43,7 @@ namespace PROJECTGREEN.Authentication
                 // Validate the JWT Issuer (iss) claim
                 ValidateIssuer = true,
 
-                ValidIssuer = "greenactionportal",
+                ValidIssuer = "projectgreen",
 
                 // Validate the JWT Audience (aud) claim
                 ValidateAudience = true,

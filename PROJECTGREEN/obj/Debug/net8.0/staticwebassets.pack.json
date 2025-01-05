@@ -6949,6 +6949,34 @@
       "PackagePath": "staticwebassets\\AdminLayout\\vendors\\x-editable\\bootstrap-editable.min.js"
     },
     {
+      "Id": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\wwwroot\\Attachments\\BABAG LOGO.jpg",
+      "PackagePath": "staticwebassets\\Attachments\\BABAG LOGO.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\wwwroot\\Attachments\\absalon.png",
+      "PackagePath": "staticwebassets\\Attachments\\absalon.png"
+    },
+    {
+      "Id": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\wwwroot\\Attachments\\ando.png",
+      "PackagePath": "staticwebassets\\Attachments\\ando.png"
+    },
+    {
+      "Id": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\wwwroot\\Attachments\\berdon.png",
+      "PackagePath": "staticwebassets\\Attachments\\berdon.png"
+    },
+    {
+      "Id": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\wwwroot\\Attachments\\bering.png",
+      "PackagePath": "staticwebassets\\Attachments\\bering.png"
+    },
+    {
+      "Id": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\wwwroot\\Attachments\\manayon.png",
+      "PackagePath": "staticwebassets\\Attachments\\manayon.png"
+    },
+    {
+      "Id": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\wwwroot\\Attachments\\merelynBerdon.png",
+      "PackagePath": "staticwebassets\\Attachments\\merelynBerdon.png"
+    },
+    {
       "Id": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\wwwroot\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
     },
@@ -6961,8 +6989,28 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\wwwroot\\images\\babagLandscape1.png",
+      "PackagePath": "staticwebassets\\images\\babagLandscape1.png"
+    },
+    {
+      "Id": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\wwwroot\\images\\babagLandscape2.png",
+      "PackagePath": "staticwebassets\\images\\babagLandscape2.png"
+    },
+    {
       "Id": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\wwwroot\\images\\babagLogo.png",
       "PackagePath": "staticwebassets\\images\\babagLogo.png"
+    },
+    {
+      "Id": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\wwwroot\\images\\babagPortrait.jpg",
+      "PackagePath": "staticwebassets\\images\\babagPortrait.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\wwwroot\\images\\babagPortrait2.mp4",
+      "PackagePath": "staticwebassets\\images\\babagPortrait2.mp4"
+    },
+    {
+      "Id": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\wwwroot\\images\\defaultProfile.jpg",
+      "PackagePath": "staticwebassets\\images\\defaultProfile.jpg"
     },
     {
       "Id": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\wwwroot\\images\\logo-mini.png",

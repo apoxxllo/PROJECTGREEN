@@ -17,5 +17,11 @@ public partial class Event
 
     public string? PhotoPath { get; set; }
 
+    public string? Location { get; set; }
+
+    public string? DocuLink { get; set; }
+
+    public DateTime? Date { get; set; }
+
     public virtual ICollection<ProgramFeedback> ProgramFeedbacks { get; set; } = new List<ProgramFeedback>();
 }

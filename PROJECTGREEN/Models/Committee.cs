@@ -11,5 +11,7 @@ public partial class Committee
 
     public string? Responsibilities { get; set; }
 
+    public string? RoleInGreenInitiatives { get; set; }
+
     public virtual ICollection<CommitteeAssignment> CommitteeAssignments { get; set; } = new List<CommitteeAssignment>();
 }

@@ -1,0 +1,158 @@
+﻿@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewData["Title"] = "Babag EcoHub: Events/Programs";
+
+    var events = ViewBag.Events as List<Event>;
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="container mt-5">
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success" style="border-radius: 0;" role="alert">
+            @TempData["message"]
+        </div>
+    }
+    @if (TempData["error"] != null)
+    {
+        <div class="alert alert-danger" style="border-radius: 0;" role="alert">
+            @TempData["error"]
+        </div>
+    }
+    <div class="text-center mb-4">
+        <h1 class="text-primary">Babag EcoHub: Events and Programs</h1>
+        <p class="text-muted">Stay updated with the latest happenings in Barangay Babag!</p>
+    </div>
+
+    @if (events != null && events.Any())
+    {
+        <div class="row">
+            @foreach (var ev in events)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm h-100">
+                        @if (!string.IsNullOrEmpty(ev.PhotoPath))
+                        {
+                            <img src="@ev.PhotoPath" alt="@ev.EventName" class="card-img-top" style="height: 200px; object-fit: cover;" />
+                        }
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">@ev.EventName</h5>
+                            <p class="card-text">
+                                <strong>Type:</strong> @ev.Type <br />
+                                <strong>Date:</strong> @(ev.Date?.ToString("MMMM dd, yyyy") ?? "TBA") <br />
+                            </p>
+                            <a href="@ev.DocuLink" target="_blank" class="btn btn-sm btn-primary mt-2">
+                                View Details
+                            </a>
+                            <button class="btn btn-sm btn-success mt-2" data-bs-toggle="modal" data-bs-target="#feedbackModal_@ev.Id">
+                                <i class="fas fa-star"></i> Give Feedback
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback Modal for Each Event -->
+                <div class="modal fade" id="feedbackModal_@ev.Id" tabindex="-1" aria-labelledby="feedbackModalLabel_@ev.Id" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="feedbackModalLabel_@ev.Id">Feedback for @ev.EventName</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="feedbackForm_@ev.Id" asp-action="AddFeedback" asp-controller="Home" method="post">
+                                    <input type="hidden" name="id" value="@ev.Id" />
+                                    <div class="mb-3">
+                                        <label for="firstName_@ev.Id" class="form-label">First Name (Optional):</label>
+                                        <input type="text" class="form-control" id="firstName_@ev.Id" name="firstName" placeholder="Enter your first name" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="lastName_@ev.Id" class="form-label">Last Name (Optional):</label>
+                                        <input type="text" class="form-control" id="lastName_@ev.Id" name="lastName" placeholder="Enter your last name" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="starRating_@ev.Id" class="form-label">Rate the Event/Program:</label>
+                                        <div class="star-rating">
+                                            @for (int i = 5; i >= 1; i--)
+                                            {
+                                                <input type="radio" id="star_@i-@ev.Id" name="rating" value="@i" />
+                                                <label for="star_@i-@ev.Id" class="fa fa-star"></label>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="feedbackComment_@ev.Id" class="form-label">Your Comments:</label>
+                                        <textarea class="form-control" id="feedbackComment_@ev.Id" name="comment" rows="3" placeholder="Share your thoughts..."></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                                </form>
+                                <div class="mt-4">
+                                    <h5>Existing Comments</h5>
+                                    @foreach (var comment in ev.ProgramFeedbacks)
+                                    {
+                                        <div class="border p-3 mb-3 rounded-3">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <strong>Author: @(string.IsNullOrEmpty(comment.FirstName) ? "Anonymous" : comment.FirstName)</strong>
+                                                <strong>@comment.Stars ⭐</strong>
+                                                <small class="text-muted">@comment.SubmittedAt.Value.ToString("MMM dd, yyyy, h:mm tt")</small>
+                                            </div>
+                                            <div>
+                                                <p>@comment.Comment</p>
+                                            </div>
+                                        </div>
+                                    }
+                                    @if (!ev.ProgramFeedbacks.Any())
+                                    {
+                                        <div class="border p-3 mb-3 rounded-3">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <strong>No feedbacks available</strong>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="text-center">
+            <p>No events or programs are currently available. Please check back later!</p>
+        </div>
+    }
+</div>
+
+<style>
+    .star-rating {
+        direction: rtl;
+        display: inline-flex;
+    }
+
+        .star-rating input[type="radio"] {
+            display: none;
+        }
+
+        .star-rating label {
+            font-size: 2rem;
+            color: #ddd;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+
+        .star-rating input[type="radio"]:checked ~ label {
+            color: #ffc107;
+        }
+
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: #ffc107;
+        }
+</style>

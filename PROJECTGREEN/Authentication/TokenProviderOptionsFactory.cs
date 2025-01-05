@@ -24,7 +24,7 @@ namespace PROJECTGREEN.Authentication
             {
                 Path = token.TokenPath,
                 Audience = token.Audience,
-                Issuer = "greenactionportal",
+                Issuer = "projectgreen",
                 Expiration = TimeSpan.FromMinutes(token.ExpirationMinutes),
                 SigningCredentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256),
                 //IdentityResolver = new SignInManager(null, null).GetClaimsIdentity,

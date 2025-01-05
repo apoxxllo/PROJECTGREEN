@@ -1,0 +1,70 @@
+﻿@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewData["Title"] = "Babag EcoHub: Employee Work Schedules";
+
+    var categories = new List<(string Title, List<RoleWorkSchedule> Data)>
+    {
+        ("Waste Segregation & Collection Duties", ViewBag.Num1 as List<RoleWorkSchedule>),
+        ("Recycling Program & Awareness Campaigns", ViewBag.Num2 as List<RoleWorkSchedule>),
+        ("Energy Efficiency and Resource Conservation", ViewBag.Num3 as List<RoleWorkSchedule>),
+        ("Water Conservation and Waste Reduction", ViewBag.Num4 as List<RoleWorkSchedule>),
+        ("Green Procurement & Sustainable Practices", ViewBag.Num5 as List<RoleWorkSchedule>)
+    };
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Babag EcoHub: Employee Work Schedules</h1>
+    <p class="text-center text-muted">Discover how we ensure sustainable practices and improve community involvement through our scheduled duties.</p>
+    @foreach (var category in categories)
+    {
+        if (category.Data != null && category.Data.Any())
+        {
+            <div class="my-5">
+                <h2 class="text-success text-center mb-3">@category.Title</h2>
+                <p class="text-center text-muted">
+                    Learn more about @category.Title to understand how it contributes to a greener and more sustainable Babag EcoHub.
+                </p>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover align-middle">
+                        <thead class="table-success text-center">
+                            <tr>
+                                <th scope="col">Employee Role</th>
+                                <th scope="col">Task Description</th>
+                                <th scope="col">Schedule</th>
+                                <th scope="col">Time Table</th>
+                                <th scope="col">Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in category.Data)
+                            {
+                                <tr>
+                                    <td class="text-center">@item.EmployeeRole.EmployeeRole1</td>
+                                    <td>@item.TaskDescription</td>
+                                    <td class="text-center">@item.Schedule</td>
+                                    <td class="text-center">@item.TimeTable</td>
+                                    <td>@item.Remarks</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="alert alert-info mt-3">
+                    <strong>Note for Residents:</strong> Please support the @category.Title team by adhering to eco-friendly practices. For example, segregate waste at home, participate in workshops, or follow our energy-saving tips.
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="my-5 text-center">
+                <h2 class="text-secondary">@category.Title</h2>
+                <p class="text-muted">No schedules available at the moment. Stay tuned for updates!</p>
+            </div>
+        }
+    }
+</div>

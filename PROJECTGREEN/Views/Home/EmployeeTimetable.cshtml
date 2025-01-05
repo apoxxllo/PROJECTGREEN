@@ -1,0 +1,56 @@
+﻿@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewData["Title"] = "Babag EcoHub: Employee Timetable";
+
+    var timetable = ViewBag.EmployeeTimeTable as List<EmployeeTimetable>;
+}
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Babag EcoHub: Employee Timetable</h1>
+    <p class="text-center text-muted">Explore the weekly schedule of our dedicated eco-teams working to build a sustainable future for our community.</p>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle">
+            <thead class="table-success text-center">
+                <tr>
+                    <th scope="col">Time</th>
+                    <th scope="col">Monday</th>
+                    <th scope="col">Tuesday</th>
+                    <th scope="col">Wednesday</th>
+                    <th scope="col">Thursday</th>
+                    <th scope="col">Friday</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var slot in timetable)
+                {
+                    <tr>
+                        <td class="text-center"><strong>@slot.Time</strong></td>
+                        <td>@slot.MondayTask</td>
+                        <td>@slot.TuesTask</td>
+                        <td>@slot.WedTask</td>
+                        <td>@slot.ThuTask</td>
+                        <td>@slot.FriTask</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="alert alert-info mt-4">
+        <h4 class="alert-heading">How You Can Help!</h4>
+        <ul class="mb-0">
+            <li><strong>Monday:</strong> Start your week by segregating waste for collection and ensuring proper disposal of recyclables.</li>
+            <li><strong>Tuesday:</strong> Take small steps to conserve energy at home, like turning off lights and unplugging unused devices.</li>
+            <li><strong>Wednesday:</strong> Support the Waste Collection team by following our segregation guidelines.</li>
+            <li><strong>Thursday:</strong> Learn about sustainable IT practices and how to reduce your digital footprint.</li>
+            <li><strong>Friday:</strong> Participate in green workshops or contribute to recycling drives in your community.</li>
+        </ul>
+    </div>
+</div>

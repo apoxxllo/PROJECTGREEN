@@ -20,4 +20,8 @@ public partial class Incident
     public string? DocumentationLink { get; set; }
 
     public string? Status { get; set; }
+
+    public string? Impact { get; set; }
+
+    public virtual ICollection<IncidentFeedback> IncidentFeedbacks { get; set; } = new List<IncidentFeedback>();
 }

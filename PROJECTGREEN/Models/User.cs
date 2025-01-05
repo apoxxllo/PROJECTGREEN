@@ -21,6 +21,10 @@ public partial class User
 
     public string? ProfilePicPath { get; set; }
 
+    public int? BarangayPositionId { get; set; }
+
+    public virtual BarangayPosition? BarangayPosition { get; set; }
+
     public virtual ICollection<CommitteeAssignment> CommitteeAssignments { get; set; } = new List<CommitteeAssignment>();
 
     public virtual ICollection<PositionAssignment> PositionAssignments { get; set; } = new List<PositionAssignment>();

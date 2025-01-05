@@ -1,4 +1,242 @@
-﻿@{
+﻿@model AdminViewModel
+@{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     ViewData["Title"] = "Babag EcoHub: Official Dashboard";
+    var totalWasteCollected = Model.Volume.BiodegradableCollected + Model.Volume.NonbioCollected + Model.Volume.RecyclablesCollected;
+    var totalWasteCollectedInTons = (Model.Volume.BiodegradableCollected + Model.Volume.NonbioCollected + Model.Volume.RecyclablesCollected) / 1000;
 }
+<style>
+    .metric-card {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+        .metric-card h5 {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+    .badge {
+        font-size: 14px;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .badge-success {
+        background: #4CAF50;
+        color: white;
+    }
+
+    .badge-warning {
+        background: #FF9800;
+        color: white;
+    }
+
+    .badge-danger {
+        background: #F44336;
+        color: white;
+    }
+</style>
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h1 class="text-primary">Babag EcoHub: Official Dashboard</h1>
+        <p class="text-muted">An overview of Barangay Babag's population statistics and activities.</p>
+    </div>
+
+    <div class="row">
+        <!-- Population Overview -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title text-dark">Population Overview</h5>
+                    <canvas id="populationChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <!-- Programs Feedback -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title text-dark">Programs Feedback</h5>
+                    <canvas id="programsFeedbackChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="metric-card">
+                        <h5>Total Waste Collected</h5>
+                        <p><span class="badge badge-success">@totalWasteCollected.Value.ToString("N0") kg (@totalWasteCollectedInTons tons)</span></p>
+
+                        <small class="text-muted">Estimated at 20,045 kg/day waste generation rate.</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="metric-card">
+                        <h5>Biodegradable Waste</h5>
+                        <p><span class="badge badge-success">@Model.Volume.BiodegradableCollected.Value.ToString("N0") kg (@(((double)Model.Volume.BiodegradableCollected / (double)totalWasteCollected * 100.0).ToString("N2"))%)</span></p>
+                        <small class="text-muted">@(((double)Model.Volume.BiodegradableCollected / (double)totalWasteCollected * 100.0).ToString("N2"))% of total waste collected.</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="metric-card">
+                        <h5>Non-Biodegradable Waste</h5>
+                        <p><span class="badge badge-danger">@Model.Volume.NonbioCollected.Value.ToString("N0") kg (@(((double)Model.Volume.NonbioCollected / (double)totalWasteCollected * 100.0).ToString("N2"))%)</span></p>
+                        <small class="text-muted">@(((double)Model.Volume.NonbioCollected / (double)totalWasteCollected * 100.0).ToString("N2"))% of total waste collected.</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="metric-card">
+                        <h5>Recyclables Collected</h5>
+                        <p><span class="badge badge-warning">@Model.Volume.RecyclablesCollected.Value.ToString("N2") kg (@(((double)Model.Volume.RecyclablesCollected / (double)totalWasteCollected * 100.0).ToString("N2"))%)</span></p>
+                        <small class="text-muted">@(((double)Model.Volume.RecyclablesCollected / (double)totalWasteCollected * 100.0).ToString("N2"))% of total waste collected.</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="metric-card">
+                        <h5>Recycling Success Rate</h5>
+                        <p><span class="badge badge-success">@(((double)Model.Volume.MonthlyRecycled / (double)Model.Volume.RecyclablesCollected * 100.0).ToString("N2"))%</span></p>
+                        <small class="text-muted">Percentage of recyclables processed for reuse.</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="metric-card">
+                        <h5>Monthly Recycled Volume</h5>
+                        <p><span class="badge badge-success">@Model.Volume.MonthlyRecycled.Value.ToString("N0") kg</span></p>
+                        <small class="text-muted">(@(((double)Model.Volume.MonthlyRecycled / (double)Model.Volume.RecyclablesCollected * 100.0).ToString("N2"))%) of recyclables collected.</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="metric-card">
+                        <h5>Uncollected Waste</h5>
+                        <p><span class="badge badge-danger">@Model.Volume.UncollectedWaste.Value.ToString("N0") kg (@(((double)Model.Volume.UncollectedWaste / (double)totalWasteCollected * 100.0).ToString("N2"))%)</span></p>
+                        <small class="text-muted">Due to improper disposal or lack of access.</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="metric-card">
+                        <h5>E-Waste Recycled</h5>
+                        <p><span class="badge badge-warning">@Model.Volume.EwasteRecycled.Value.ToString("N0") kg</span></p>
+                        <small class="text-muted">Collected via community drives.</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="metric-card">
+                        <h5>MRF Processing Capacity</h5>
+                        <p><span class="badge badge-success">@Model.Volume.MrfProcessingCapacity tons/month</span></p>
+                        <small class="text-muted">Materials Recovery Facility capacity.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="metric-card">
+                <h5>Top 3 Events Based on Feedback</h5>
+                <ul class="list-group">
+                    @foreach (var eventItem in Model.TopEvents)
+                    {
+                        <li class="list-group-item">
+                            <strong>Event Name:</strong> @eventItem.NameOfEvent<br>
+                            <strong>Average Rating:</strong> @eventItem.AverageStar.Value.ToString("N2")
+                            <strong>Facebook Link:</strong> <a href="@eventItem.Link.Split(",").FirstOrDefault()" target="_blank">@eventItem.Link.Split(",").FirstOrDefault()</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5 metric-card">
+        <h2>Incident Frequency (December 2023 - December 2024)</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Location</th>
+                    <th>Type of Incident</th>
+                    <th>Frequency</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var incident in Model.IncidentFrequency)
+                {
+                    <tr>
+                        <td>@incident.Location</td>
+                        <td>@incident.TypeOfIncident</td>
+                        <td>@incident.Frequency</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Population Data
+    const populationCtx = document.getElementById('populationChart').getContext('2d');
+    const populationChart = new Chart(populationCtx, {
+        type: 'bar',
+        data: {
+            labels: ['2000', '2010', '2015', '2020'],
+            datasets: [{
+                label: 'Population',
+                data: [9001, 17721, 22756, 30839],
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false },
+                title: { display: true, text: 'Population Growth' }
+            },
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+
+    // Programs Feedback Data
+    const feedbackCtx = document.getElementById('programsFeedbackChart').getContext('2d');
+    const programsFeedbackChart = new Chart(feedbackCtx, {
+        type: 'radar',
+        data: {
+            labels: ['Clean-up Drive', 'Feeding Program', 'Tree Planting', 'Road Repair', 'Health Check-up'],
+            datasets: [{
+                label: 'Feedback Score',
+                data: [4.5, 4.0, 4.8, 4.3, 4.6],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false },
+                title: { display: true, text: 'Programs Feedback (Avg. Rating)' }
+            },
+            scales: {
+                r: { beginAtZero: true }
+            }
+        }
+    });
+</script>

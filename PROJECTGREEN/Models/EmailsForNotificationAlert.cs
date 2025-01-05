@@ -12,4 +12,8 @@ public partial class EmailsForNotificationAlert
     public string? FirstName { get; set; }
 
     public string? LastName { get; set; }
+
+    public int? Zone { get; set; }
+
+    public string? DayOfTheWeek { get; set; }
 }

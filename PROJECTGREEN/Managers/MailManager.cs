@@ -32,7 +32,7 @@ namespace PROJECTGREEN.Manager
                         DeliveryMethod = SmtpDeliveryMethod.Network
                     };
 
-                    message.From = new MailAddress(_mailSender, "TickeTechy");
+                    message.From = new MailAddress(_mailSender, "Babag EcoHub");
                     message.To.Add(new MailAddress(recipient));
                     message.Subject = subject;
                     message.IsBodyHtml = true;
@@ -50,7 +50,7 @@ namespace PROJECTGREEN.Manager
             }
         }
 
-        public bool SendWelcomeEmail(string recipientEmail, string firstName, string username, string password, string role, ref string errResponse)
+        public bool SendAlertEmail(string recipientEmail, string subject, string firstName, string schedule, string zone, ref string errResponse)
         {
             string welcomeTemplate = $@"<!DOCTYPE html>
                     <html lang='en'>
@@ -61,159 +61,51 @@ namespace PROJECTGREEN.Manager
                     </head>
                     <body style='font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;'>
                         <div style='max-width: 600px; margin: 20px auto; background-color: #fff; border-radius: 10px; overflow: hidden;'>
-                            <div style='background-color: #e1f4fe; color: #333; text-align: center; padding: 20px 0;'>
-                                <h1 style='margin: 0; font-size: 24px;'>Welcome to TickeTechy!</h1>
+                            <div style='background-color: #70c778; color: #333; text-align: center; padding: 20px 0;'>
+                                <h1 style='margin: 0; font-size: 24px;'>Babag EcoHub Waste Collection Reminder!</h1>
                             </div>
                             <div style='padding: 20px;'>
-                                <p style='font-size: 16px;'>Hi, {firstName}! Welcome to TickeTechy! You have successfully registered as a {role}.</p>
-                                <p style='font-size: 16px;'>Your username is <strong>{username}</strong> and your default password is <strong>{password}</strong>.</p>
-                                <p style='font-size: 16px;'>Thank you for choosing TickeTechy for your ticketing solutions!</p>
+                                <p style='font-size: 16px;'>Hi, {firstName}! This is Babag EcoHub, since you've subscribed to our alert notification, here's a reminder for you to ready up your trash bags!</p>
+                                <p style='font-size: 16px;'>Our garbage truck driver is on the way to collect the trashes at {zone}, {schedule}. </p>
+                                <p style='font-size: 16px;'>Thank you for helping Brgy. Babag become cleaner!</p>
                             </div>
                         </div>
                     </body>
                     </html>";
 
-            welcomeTemplate = welcomeTemplate.Replace("{firstName}", firstName).Replace("{role}", role)
-                                     .Replace("{username}", username)
-                                     .Replace("{password}", password);
+            welcomeTemplate = welcomeTemplate.Replace("{firstName}", firstName).Replace("{zone}", zone)
+                                     .Replace("{zone}", zone)
+                                     .Replace("{schedule}", schedule);
 
-            return SendEmail(recipientEmail, "Welcome to Babag EcoHub", welcomeTemplate, ref errResponse);
+            return SendEmail(recipientEmail, subject, welcomeTemplate, ref errResponse);
         }
 
-        public bool SendOtpForgotPassword(string recipientEmail, string firstName, string otpCode, ref string errResponse)
+        public bool SendAlertAdminEmail(string recipientEmail, string subject, string firstName, string report ,ref string errResponse)
         {
             string welcomeTemplate = $@"<!DOCTYPE html>
                     <html lang='en'>
                     <head>
                         <meta charset='UTF-8'>
                         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-                        <title>Forgot password?</title>
+                        <title>Welcome to Babag EcoHub!</title>
                     </head>
                     <body style='font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;'>
                         <div style='max-width: 600px; margin: 20px auto; background-color: #fff; border-radius: 10px; overflow: hidden;'>
-                            <div style='background-color: #e1f4fe; color: #333; text-align: center; padding: 20px 0;'>
-                                <h1 style='margin: 0; font-size: 24px;'>TickeTechy!</h1>
+                            <div style='background-color: #70c778; color: #333; text-align: center; padding: 20px 0;'>
+                                <h1 style='margin: 0; font-size: 24px;'>Babag EcoHub Waste Collection Reminder!</h1>
                             </div>
                             <div style='padding: 20px;'>
-                                <p style='font-size: 16px;'>Hi, {firstName}! So... you have forgotten your password?</p>
-                                <p style='font-size: 16px;'>Here is the OTP code, copy this into the OTP input box and submit it and you can change your password: <strong>{otpCode}</strong>.</p>
-                                <p style='font-size: 16px;'>Do not forget your password next time!</p>
+                                <p style='font-size: 16px;'>Hi, Official {firstName}! This is Babag EcoHub, an incident has been reported within your barangay.</p>
+                                <p style='font-size: 16px;'>Check our website at <a href='https://localhost:7097/'>https://localhost:7097/Account/Login</a> to approve this report ({report}).</p>
+                                < p style='font-size: 16px;'>Thank you for helping Brgy. Babag be safe!</p>
                             </div>
                         </div>
                     </body>
                     </html>";
 
-            welcomeTemplate = welcomeTemplate.Replace("{firstName}", firstName)
-                                     .Replace("{otpCode}", otpCode);
+            welcomeTemplate = welcomeTemplate.Replace("{firstName}", firstName).Replace("{report}", report);
 
-            return SendEmail(recipientEmail, "TickeTechy - Forgot Password", welcomeTemplate, ref errResponse);
-        }
-
-
-        public bool EmailRespond(string recipientEmail, string firstName, int ticketId, string ticketMessage, ref string errResponse)
-        {
-            string respondTemplate = $@"<!DOCTYPE html>
-            <html lang='en'>
-            <head>
-                <meta charset='UTF-8'>
-                <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-                <title>Ticket Message from TickeTechy</title>
-            </head>
-            <body style='font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;'>
-                <div style='max-width: 600px; margin: 20px auto; background-color: #fff; border-radius: 10px; overflow: hidden;'>
-                    <div style='background-color: #e1f4fe; color: #333; text-align: center; padding: 20px 0;'>
-                        <h1 style='margin: 0; font-size: 24px;'>Message for Ticket #{ticketId}</h1>
-                    </div>
-                    <div style='padding: 20px;'>
-                        <p style='font-size: 16px;'>Hi, {firstName}!</p>
-                        <p style='font-size: 16px;'>You have received a new message for Ticket #{ticketId}:</p>
-                        <blockquote style='font-size: 16px; color: #333;'>{ticketMessage}</blockquote>
-                        <p style='font-size: 16px;'>Thank you for using TickeTechy for your ticketing solutions!</p>
-                    </div>
-                </div>
-            </body>
-            </html>";
-
-            return SendEmail(recipientEmail, $"New Message for Ticket #{ticketId}", respondTemplate, ref errResponse);
-        }
-
-        public bool ResolveNotif(string recipientEmail, string firstName, int ticketId, string ticketMessage, ref string errResponse)
-        {
-            string ResolveTemplate = $@"<!DOCTYPE html>
-            <html lang='en'>
-            <head>
-                <meta charset='UTF-8'>
-                <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-                <title>Ticket Message from TickeTechy</title>
-            </head>
-            <body style='font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;'>
-                <div style='max-width: 600px; margin: 20px auto; background-color: #fff; border-radius: 10px; overflow: hidden;'>
-                    <div style='background-color: #e1f4fe; color: #333; text-align: center; padding: 20px 0;'>
-                        <h1 style='margin: 0; font-size: 24px;'>Message for Ticket #{ticketId}</h1>
-                    </div>
-                    <div style='padding: 20px;'>
-                        <p style='font-size: 16px;'>Hi, {firstName}!</p>
-                        <p style='font-size: 16px;'>Please Confirm Ticket#{ticketId}, if your problem has been resolved.</p>
-                        <p style='font-size: 16px;'>Please login to the system to confirm!</p>
-                        <p style='font-size: 16px;'>Thank you for using TickeTechy for your ticketing solutions!</p>
-                    </div>
-                </div>
-            </body>
-            </html>";
-
-            return SendEmail(recipientEmail, $"New Message for Ticket #{ticketId}", ResolveTemplate, ref errResponse);
-        }
-        public bool ResolveNotifToClient(string recipientEmail, string firstName, int ticketId, string ticketMessage, ref string errResponse)
-        {
-            string ResolveTemplate = $@"<!DOCTYPE html>
-            <html lang='en'>
-            <head>
-                <meta charset='UTF-8'>
-                <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-                <title>Ticket Message from TickeTechy</title>
-            </head>
-            <body style='font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;'>
-                <div style='max-width: 600px; margin: 20px auto; background-color: #fff; border-radius: 10px; overflow: hidden;'>
-                    <div style='background-color: #e1f4fe; color: #333; text-align: center; padding: 20px 0;'>
-                        <h1 style='margin: 0; font-size: 24px;'>Message for Ticket #{ticketId}</h1>
-                    </div>
-                    <div style='padding: 20px;'>
-                        <p style='font-size: 16px;'>Hi, {firstName}!</p>
-                        <p style='font-size: 16px;'>The user confirmed the problem has been resolved </p>
-                        <p style='font-size: 16px;'>Thank you for using TickeTechy for your ticketing solutions!</p>
-                    </div>
-                </div>
-            </body>
-            </html>";
-
-            return SendEmail(recipientEmail, $"New Message for Ticket #{ticketId}", ResolveTemplate, ref errResponse);
-        }
-
-        public bool AssignedToAgentEmail(string recipientEmail, string firstName, string description, ref string errResponse)
-        {
-            string ResolveTemplate = $@"<!DOCTYPE html>
-            <html lang='en'>
-            <head>
-                <meta charset='UTF-8'>
-                <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-                <title>Ticket Assigned to you from TickeTechy</title>
-            </head>
-            <body style='font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;'>
-                <div style='max-width: 600px; margin: 20px auto; background-color: #fff; border-radius: 10px; overflow: hidden;'>
-                    <div style='background-color: #e1f4fe; color: #333; text-align: center; padding: 20px 0;'>
-                        <h1 style='margin: 0; font-size: 24px;'>A new ticket has arrived!</h1>
-                    </div>
-                    <div style='padding: 20px;'>
-                        <p style='font-size: 16px;'>Hi, Agent {firstName}!</p>
-                        <p style='font-size: 16px;'>A ticket has been assigned to you!</p>                        
-                        <p style='font-size: 16px;'>Ticket Description: {description}</p>
-                        <p style='font-size: 16px;'>Thank you for using TickeTechy for your ticketing solutions!</p>
-                    </div>
-                </div>
-            </body>
-            </html>";
-
-            return SendEmail(recipientEmail, $"Ticket Assigned to you", ResolveTemplate, ref errResponse);
+            return SendEmail(recipientEmail, subject, welcomeTemplate, ref errResponse);
         }
     }
 }

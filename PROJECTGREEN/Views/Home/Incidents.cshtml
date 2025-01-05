@@ -1,0 +1,204 @@
+﻿@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewData["Title"] = "Babag EcoHub: Incidents";
+
+    var incidents = ViewBag.Incidents as List<Incident>;
+}
+
+<br /><br /><br /><br /><br />
+
+<div class="container mt-5">
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success" style="border-radius: 0;" role="alert">
+            @TempData["message"]
+        </div>
+    }
+    @if (TempData["error"] != null)
+    {
+        <div class="alert alert-danger" style="border-radius: 0;" role="alert">
+            @TempData["error"]
+        </div>
+    }
+    
+    <h1 class="text-center mb-4">Babag EcoHub: Reported Incidents</h1>
+    <p class="text-center text-muted">Stay updated on incidents affecting the environment in Barangay Babag and learn how you can contribute to resolving them.</p>
+
+    <!-- Tips Section -->
+    <div class="alert alert-info">
+        <h4 class="alert-heading">Helpful Tips for Residents</h4>
+        <ul class="mb-0">
+            <li><strong>Report promptly:</strong> If you see illegal dumping or burning, report it immediately to prevent environmental damage.</li>
+            <li><strong>Follow waste segregation:</strong> Properly segregate your trash to avoid fines and ensure recyclables are processed correctly.</li>
+            <li><strong>Participate:</strong> Join community cleanups and recycling drives to help keep Barangay Babag clean and green.</li>
+        </ul>
+    </div>
+
+    <!-- Incidents Table -->
+    <div class="table-responsive mt-4">
+        <table class="table table-bordered table-hover align-middle">
+            <thead class="table-danger text-center">
+                <tr>
+                    <th scope="col">Incident Type</th>
+                    <th scope="col">Date & Time</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Impact</th>
+                    <th scope="col">Reason</th>
+                    <th scope="col">Resolution</th>
+                    <th scope="col" style="max-width: 50px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Documentation Link (Post)</th>
+                    <th scope="col">Comments</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var incident in incidents)
+                {
+                    <tr>
+                        <td>@incident.IncidentType</td>
+                        <td>@incident.Date.Value.ToString("MMM dd, yyyy")</td>
+                        <td>@incident.Location</td>
+                        <td>@incident.Impact</td>
+                        <td>@incident.Reason</td>
+                        <td>@incident.Resolution</td>
+                        <td class="text-truncate" style="max-width: 200px;">
+                            <a style="color: blue; text-decoration: underline; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" href="@incident.DocumentationLink" target="_blank">
+                                @incident.DocumentationLink
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#commentModal_@incident.Id">Add Comment</button>
+                        </td>
+                    </tr>
+
+                    <!-- Comment Modal for Each Incident -->
+                    <div class="modal fade" id="commentModal_@incident.Id" tabindex="-1" aria-labelledby="commentModalLabel_@incident.Id" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="commentModalLabel_@incident.Id">Add a Comment for @incident.IncidentType at @incident.Location</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form asp-action="AddComment" asp-controller="Home" method="post">
+                                        <div class="mb-3">
+                                            <input type="hidden" name="IncidentId" value="@incident.Id" />
+                                            <label for="comment" class="form-label">Your Comment</label>
+                                            <textarea class="form-control" id="comment" name="comment" rows="4" placeholder="Add your comment here..."></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                                    </form>
+
+                                    <div class="mt-4">
+                                        <h5>Existing Comments</h5>
+                                        @foreach (var comment in incident.IncidentFeedbacks)
+                                        {
+                                            <div class="border p-3 mb-3 rounded-3">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <strong>@comment.Comment</strong>
+                                                    <small class="text-muted">@comment.Date.Value.ToString("MMM dd, yyyy, h:mm tt")</small>
+                                                </div>
+                                            </div>
+                                        }
+                                        @if (!incident.IncidentFeedbacks.Any())
+                                        {
+                                            <div class="border p-3 mb-3 rounded-3">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <strong>No comments available</strong>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Report Incident Button -->
+    <div class="text-center mt-4">
+        <button class="btn btn-danger btn-lg mb-3" data-bs-toggle="modal" data-bs-target="#reportIncidentModal">Report Incident</button>
+    </div>
+
+    <!-- Report Incident Modal -->
+    <div class="modal fade" id="reportIncidentModal" tabindex="-1" aria-labelledby="reportIncidentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="reportIncidentModalLabel">Report an Incident</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form asp-action="ReportIncident" asp-controller="Home">
+                        <div class="mb-3">
+                            <label for="incidentType" class="form-label">Incident Type</label>
+                            <select class="form-select" id="incidentType" name="type">
+                                <option value="Fire">Fire</option>
+                                <option value="Illegal Dumping">Illegal Dumping</option>
+                                <option value="Burning of Waste">Burning of Waste</option>
+                                <option value="Flooding">Flooding</option>
+                                <option value="Road Traffic">Road Traffic</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="incidentDateTime" class="form-label">Date & Time</label>
+                            <input type="datetime-local" name="datetime" class="form-control" id="incidentDateTime" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="incidentLocation" class="form-label">Location</label>
+                            <input type="text" class="form-control" id="incidentLocation" name="location" readonly placeholder="Click on the map to select a location" />
+                            <div id="map" style="height: 300px; margin-top: 10px;"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Report</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let map, marker, geocoder;
+
+    function initMap() {
+        const babagCenter = { lat: 10.283590756440029, lng: 123.94697465747159 }; // Coordinates for Brgy Babag, Lapu-Lapu City
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: babagCenter,
+            zoom: 15,
+        });
+
+        geocoder = new google.maps.Geocoder(); // Initialize the geocoder
+
+        map.addListener("click", (event) => {
+            const lat = event.latLng.lat();
+            const lng = event.latLng.lng();
+
+            // Fetch the human-readable address using Geocoding API
+            geocoder.geocode({ location: { lat: lat, lng: lng } }, (results, status) => {
+                if (status === "OK") {
+                    if (results[0]) {
+                        const address = results[0].formatted_address;
+                        document.getElementById("incidentLocation").value = address; // Set the address in the input box
+                    } else {
+                        document.getElementById("incidentLocation").value = "No address found";
+                    }
+                } else {
+                    console.error("Geocoder failed due to: " + status);
+                    document.getElementById("incidentLocation").value = "Error retrieving address";
+                }
+            });
+
+            // Add marker to the map
+            if (marker) marker.setMap(null);
+            marker = new google.maps.Marker({
+                position: event.latLng,
+                map: map,
+            });
+        });
+    }
+</script>
+
+<!-- Include Google Maps API -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0zahI7hminjL3voy9xXdpV3nJq2p-KjU&callback=initMap"></script>

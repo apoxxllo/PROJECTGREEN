@@ -1,6 +1,10 @@
-﻿@{
+﻿@model WasteVolumeDatum
+@{
     Layout = "~/Views/Shared/_MainLayout.cshtml";
     ViewData["Title"] = "Babag EcoHub: Waste Management";
+    var totalWasteCollected = Model.BiodegradableCollected + Model.NonbioCollected + Model.RecyclablesCollected;
+    var totalWasteCollectedInTons = (Model.BiodegradableCollected + Model.NonbioCollected + Model.RecyclablesCollected) / 1000;
+
 }
 <br />
 <br />
@@ -48,6 +52,18 @@
     }
 </style>
 <div class="container mt-5 mb-3">
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success" style="border-radius: 0;" role="alert">
+            @TempData["message"]
+        </div>
+    }
+    @if (TempData["error"] != null)
+    {
+        <div class="alert alert-danger" style="border-radius: 0;" role="alert">
+            @TempData["error"]
+        </div>
+    }
     <h1 class="text-center mb-4">Waste Management Overview</h1>
     <!-- Metrics Table -->
     <div class="accordion mt-2" id="metricsAccordion">
@@ -65,22 +81,23 @@
                         <div class="col-md-4">
                             <div class="metric-card">
                                 <h5>Total Waste Collected</h5>
-                                <p><span class="badge badge-success">601,350 kg (601.35 tons)</span></p>
+                                <p><span class="badge badge-success">@totalWasteCollected.Value.ToString("N0") kg (@totalWasteCollectedInTons tons)</span></p>
+
                                 <small class="text-muted">Estimated at 20,045 kg/day waste generation rate.</small>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="metric-card">
                                 <h5>Biodegradable Waste</h5>
-                                <p><span class="badge badge-success">300,675 kg (50%)</span></p>
-                                <small class="text-muted">50% of total waste collected.</small>
+                                <p><span class="badge badge-success">@Model.BiodegradableCollected.Value.ToString("N0") kg (@(((double) Model.BiodegradableCollected / (double) totalWasteCollected * 100.0).ToString("N2"))%)</span></p>
+                                <small class="text-muted">@(((double)Model.BiodegradableCollected / (double)totalWasteCollected * 100.0).ToString("N2"))% of total waste collected.</small>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="metric-card">
                                 <h5>Non-Biodegradable Waste</h5>
-                                <p><span class="badge badge-danger">210,473 kg (35%)</span></p>
-                                <small class="text-muted">35% of total waste collected.</small>
+                                <p><span class="badge badge-danger">@Model.NonbioCollected.Value.ToString("N0") kg (@(((double)Model.NonbioCollected / (double)totalWasteCollected * 100.0).ToString("N2"))%)</span></p>
+                                <small class="text-muted">@(((double)Model.NonbioCollected / (double)totalWasteCollected * 100.0).ToString("N2"))% of total waste collected.</small>
                             </div>
                         </div>
                     </div>
@@ -89,22 +106,22 @@
                         <div class="col-md-4">
                             <div class="metric-card">
                                 <h5>Recyclables Collected</h5>
-                                <p><span class="badge badge-warning">90,202 kg (15%)</span></p>
-                                <small class="text-muted">15% of total waste collected.</small>
+                                <p><span class="badge badge-warning">@Model.RecyclablesCollected.Value.ToString("N2") kg (@(((double)Model.RecyclablesCollected / (double)totalWasteCollected * 100.0).ToString("N2"))%)</span></p>
+                                <small class="text-muted">@(((double)Model.RecyclablesCollected / (double)totalWasteCollected * 100.0).ToString("N2"))% of total waste collected.</small>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="metric-card">
                                 <h5>Recycling Success Rate</h5>
-                                <p><span class="badge badge-success">55%</span></p>
+                                <p><span class="badge badge-success">@(((double)Model.MonthlyRecycled / (double)Model.RecyclablesCollected * 100.0).ToString("N2"))%</span></p>
                                 <small class="text-muted">Percentage of recyclables processed for reuse.</small>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="metric-card">
                                 <h5>Monthly Recycled Volume</h5>
-                                <p><span class="badge badge-success">49,611 kg</span></p>
-                                <small class="text-muted">55% of recyclables collected.</small>
+                                <p><span class="badge badge-success">@Model.MonthlyRecycled.Value.ToString("N0") kg</span></p>
+                                <small class="text-muted">(@(((double)Model.MonthlyRecycled / (double)Model.RecyclablesCollected * 100.0).ToString("N2"))%) of recyclables collected.</small>
                             </div>
                         </div>
                     </div>
@@ -113,27 +130,44 @@
                         <div class="col-md-4">
                             <div class="metric-card">
                                 <h5>Uncollected Waste</h5>
-                                <p><span class="badge badge-danger">30,067 kg (5%)</span></p>
+                                <p><span class="badge badge-danger">@Model.UncollectedWaste.Value.ToString("N0") kg (@(((double)Model.UncollectedWaste / (double) totalWasteCollected * 100.0).ToString("N2"))%)</span></p>
                                 <small class="text-muted">Due to improper disposal or lack of access.</small>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="metric-card">
                                 <h5>E-Waste Recycled</h5>
-                                <p><span class="badge badge-warning">120 kg</span></p>
+                                <p><span class="badge badge-warning">@Model.EwasteRecycled.Value.ToString("N0") kg</span></p>
                                 <small class="text-muted">Collected via community drives.</small>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="metric-card">
                                 <h5>MRF Processing Capacity</h5>
-                                <p><span class="badge badge-success">6 tons/month</span></p>
+                                <p><span class="badge badge-success">@Model.MrfProcessingCapacity tons/month</span></p>
                                 <small class="text-muted">Materials Recovery Facility capacity.</small>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Title for Population & Households -->
+                        <h2 class="text-center">Households Participation</h2>
+                        <!-- Chart for Population & Households -->
+                        <canvas id="populationHouseholdsChart" width="100"></canvas>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Title for Daily Waste Composition -->
+                        <h2 class="text-center">Daily Waste Composition</h2>
+                        <!-- Chart for Daily Waste Composition -->
+                        <canvas id="wasteCompositionChart"></canvas>
+                    </div>
+                </div>
+
             </div>
+            
         </div>
     </div>
 
@@ -147,17 +181,7 @@
             </h2>
             <div id="collapseInitiatives" class="accordion-collapse collapse show" aria-labelledby="headingInitiatives"
                  data-bs-parent="#initiativesAccordion">
-            <div class="row">
-                <!-- Total Population & Households -->
-                <div class="col-md-6">
-                    <canvas id="populationHouseholdsChart" width="100"></canvas>
-                </div>
-
-                <!-- Daily Waste Composition -->
-                <div class="col-md-6">
-                    <canvas id="wasteCompositionChart"></canvas>
-                </div>
-            </div>
+           
 
             <div class="row mt-4">
                 <!-- Programs and Initiatives -->
@@ -191,6 +215,11 @@
                 <div class="accordion-body">
                     <p>Barangay Babag is divided into two main waste collection zones based on the geographical and traffic layout. The zones ensure that the waste collection process is efficient, with specific trucks assigned to different routes.</p>
                     <h2>Collection Zones</h2>
+                    <button class="btn btn-primary ms-3 mb-3" data-bs-toggle="modal" data-bs-target="#emailAlertModal">Get Email Alerts/Notifications</button>
+                    <!-- Button to Unsubscribe -->
+                    <button class="btn btn-danger ms-3 mb-3" data-bs-toggle="modal" data-bs-target="#unsubscribeModal">
+                        Unsubscribe from Email Alerts
+                    </button>
                     <!-- Zone 1 -->
                     <div class="card mb-4">
                         <div class="card-body">
@@ -290,6 +319,75 @@
         </div>
     </div>
 
+</div>
+
+<!-- Modal for Unsubscribing -->
+<div class="modal fade" id="unsubscribeModal" tabindex="-1" aria-labelledby="unsubscribeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="unsubscribeModalLabel">Unsubscribe from Email Alerts</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Unsubscribe" method="post">
+                    <div class="mb-3">
+                        <label for="unsubscribeEmail" class="form-label">Enter Email to Unsubscribe</label>
+                        <input type="email" class="form-control" id="unsubscribeEmail" name="email" required />
+                    </div>
+                    <button type="submit" class="btn btn-danger">Unsubscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="emailAlertModal" tabindex="-1" aria-labelledby="emailAlertModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="emailAlertModalLabel">Subscribe for Email Alerts to notify you of your preferred garbage collection scehedule</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="emailAlertForm" method="post" action="@Url.Action("Subscribe", "Home")">
+                    <div class="mb-3">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="firstName" name="FirstName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" name="LastName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" name="Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dayOfWeek" class="form-label">Preferred Day for Notifications</label>
+                        <select class="form-select" id="dayOfWeek" name="DayOfWeek" required>
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="zone" class="form-label">Zone</label>
+                        <select class="form-select" id="zone" name="zone" required>
+                            <option value="1">Zone 1: Highway/Road Zone</option>
+                            <option value="2">Zone 2: Residential Zone</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0zahI7hminjL3voy9xXdpV3nJq2p-KjU"></script>
@@ -397,7 +495,7 @@
             data: {
                 labels: ['Households Practicing Segregation', 'Community Composting Participation', 'Other Households'],
                 datasets: [{
-                    data: [3701, 802, 6168 - (3701 + 802)],
+                    data: [@Model.HouseholdSegregation, @Model.CommunityComposting, @Model.TotalHouseholds - (@Model.HouseholdSegregation + @Model.CommunityComposting)],
                     backgroundColor: ['#4CAF50', '#FF9800', '#9E9E9E']
                 }]
             },
@@ -415,7 +513,7 @@
             data: {
                 labels: ['Biodegradable', 'Non-Biodegradable', 'Recyclable'],
                 datasets: [{
-                    data: [10022, 7016, 3007],
+                    data: [@Model.DailyWasteBio, @Model.DailyWasteNonbio, @Model.DailyWasteRecyclable],
                     backgroundColor: ['#4CAF50', '#F44336', '#2196F3']
                 }]
             },
@@ -433,13 +531,11 @@
             data: {
                 labels: [
                     'Recycling Drive Collection',
-                    'Plastic-Free Initiatives',
                     'E-Waste Collection',
-                    'Waste-to-Energy Output'
                 ],
                 datasets: [{
                     label: 'Data',
-                    data: [1800, 40, 120, 300],
+                    data: [1800, 120],
                     backgroundColor: ['#2196F3', '#FF9800', '#9C27B0', '#4CAF50']
                 }]
             },
@@ -451,7 +547,7 @@
                 },
                 scales: {
                     x: { title: { display: true, text: 'Programs' } },
-                    y: { title: { display: true, text: 'Data' } }
+                    y: { title: { display: true, text: 'Data: (KG/month)' } }
                 }
             }
         });

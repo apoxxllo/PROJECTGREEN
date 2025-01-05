@@ -77,7 +77,7 @@ namespace PROJECTGREEN.Authentication
         {
             var token = _configuration.GetTokenAuthentication();
             var userId = user.Id.ToString();
-            var name = user.Username;
+            var name = user.FirstName;
 
             var claims = new List<Claim>()
             {
@@ -89,7 +89,7 @@ namespace PROJECTGREEN.Authentication
                 new Claim("ProfilePictureUrl", user.ProfilePicPath, ClaimValueTypes.String, "projectgreen")
 
             };
-            return new ClaimsIdentity(claims, "GreenActionPortal");
+            return new ClaimsIdentity(claims, "projectgreen");
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace PROJECTGREEN.Authentication
             await _httpContextAccessor
                 .HttpContext
                 .SignInAsync(
-                            "GreenActionPortal",
+                            "projectgreen",
                             (ClaimsPrincipal)principal,
                             new AuthenticationProperties
                             {
@@ -154,7 +154,7 @@ namespace PROJECTGREEN.Authentication
         public async Task SignOutAsync()
         {
             var token = _configuration.GetTokenAuthentication();
-            await _httpContextAccessor.HttpContext.SignOutAsync("GreenActionPortal");
+            await _httpContextAccessor.HttpContext.SignOutAsync("projectgreen");
         }
     }
 }
