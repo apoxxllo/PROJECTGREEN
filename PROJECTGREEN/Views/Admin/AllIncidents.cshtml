@@ -36,7 +36,7 @@
 
     <!-- Incidents Table -->
     <div class="table-responsive mt-4">
-        <table class="table table-bordered table-hover align-middle">
+        <table class="table table-bordered table-hover align-middle" id="incidentTable">
             <thead class="table-danger text-center">
                 <tr>
                     <th scope="col">Incident Type</th>
@@ -282,7 +282,10 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
+<script src="https://cdn.datatables.net/2.0.5/js/dataTables.js"></script>
+
 <script>
+    let table = new DataTable('#incidentTable');
     $(document).ready(function () {
         $(".delete-btn").click(function () {
             // Populate modal fields with data-* attributes from the clicked button

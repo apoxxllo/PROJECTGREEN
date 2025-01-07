@@ -125,7 +125,7 @@ namespace PROJECTGREEN.Manager
                             </div>
                             <div style='padding: 20px;'>
                                 <p style='font-size: 16px;'>Hi, Official {firstName}! This is Babag EcoHub, an incident has been reported within your barangay.</p>
-                                <p style='font-size: 16px;'>Check our website at <a href='https://localhost:7097/'>https://localhost:7097/Account/Login</a> to approve this report ({report}).</p>
+                                <p style='font-size: 16px;'>Check our website at <a href='https://babagecohub-001-site1.mtempurl.com/Account/Login'>https://babagecohub-001-site1.mtempurl.com/Account/Login</a> to approve this report ({report}).</p>
                                 < p style='font-size: 16px;'>Thank you for helping Brgy. Babag become safer than ever!</p>
                             </div>
                         </div>
@@ -181,7 +181,7 @@ namespace PROJECTGREEN.Manager
                             </div>
                             <div style='padding: 20px;'>
                                 <p style='font-size: 16px;'>Hi, Official {firstName}! This is Babag EcoHub, a report from {senderName} has been submitted within your barangay about a missed garbage collection.</p>
-                                <p style='font-size: 16px;'>Check our website at <a href='https://localhost:7097/'>https://localhost:7097/Account/Login</a> to respond to this report.</p>
+                                <p style='font-size: 16px;'>Check our website at <a href='https://babagecohub-001-site1.mtempurl.com/Account/Login'>https://babagecohub-001-site1.mtempurl.com//Account/Login</a> to respond to this report.</p>
                                 <p style='font-size: 16px;'>Thank you for helping Brgy. Babag become cleaner than ever!</p>
                             </div>
                         </div>

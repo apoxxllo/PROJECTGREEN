@@ -9,6 +9,9 @@
     var skChairman = ViewBag.SkChairman as User;
     var skSecretary = ViewBag.SkSecretary as User;
     var skTreasurer = ViewBag.SkTreasurer as User;
+
+    var responsibilities = ViewBag.Responsibilities as List<CaptainResponsibility>;
+
 }
 
 <br />
@@ -183,36 +186,14 @@
         <div class="mt-3">
             <h4 class="text-primary">Responsibilities:</h4>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <strong>Policy Formulation and Implementation:</strong> Develop and enforce barangay ordinances promoting environmental sustainability, such as proper waste segregation, recycling programs, and tree-planting activities.
-                </li>
-                <li class="list-group-item">
-                    <strong>Resource Allocation:</strong> Ensure sufficient budget allocation for environmental programs, such as funding for waste management facilities, eco-friendly infrastructure, and community education campaigns.
-                </li>
-                <li class="list-group-item">
-                    <strong>Leadership in Environmental Committees:</strong> Spearhead and provide oversight for committees dedicated to environmental protection, such as the Committee on Solid Waste Management and Environmental Protection.
-                </li>
-                <li class="list-group-item">
-                    <strong>Public Awareness and Engagement:</strong> Lead efforts to educate the community on the importance of environmental conservation through seminars, information campaigns, and collaboration with schools and civic organizations.
-                </li>
-                <li class="list-group-item">
-                    <strong>Collaboration with Stakeholders:</strong> Partner with government agencies, private organizations, and NGOs to implement green initiatives and access funding or technical support.
-                </li>
-                <li class="list-group-item">
-                    <strong>Monitoring and Evaluation:</strong> Oversee the implementation of green initiatives and regularly assess their impact, ensuring programs meet sustainability goals and address community needs effectively.
-                </li>
-                <li class="list-group-item">
-                    <strong>Disaster Preparedness and Environmental Resilience:</strong> Incorporate climate adaptation and mitigation strategies into community planning to protect the environment and reduce risks from natural disasters.
-                </li>
-                <li class="list-group-item">
-                    <strong>Encouraging Eco-Friendly Practices:</strong> Promote the use of renewable energy, reduction of plastic usage, and adoption of sustainable livelihood projects to minimize environmental impact.
-                </li>
-                <li class="list-group-item">
-                    <strong>Conflict Resolution:</strong> Mediate disputes arising from environmental policies, such as land use or waste disposal, ensuring peaceful and constructive resolutions.
-                </li>
-                <li class="list-group-item">
-                    <strong>Role Model for the Community:</strong> Serve as a model for eco-friendly living, actively participating in green initiatives to inspire and motivate constituents.
-                </li>
+                @foreach (var responsibility in responsibilities)
+                {
+                    <li class="list-group-item">
+                        <div>
+                            <strong>@responsibility.ResponsibilityTitle:</strong> @responsibility.Description
+                        </div>
+                    </li>
+                }
             </ul>
         </div>
 

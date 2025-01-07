@@ -79,6 +79,51 @@ namespace PROJECTGREEN.Controllers
         }
 
         [HttpPost]
+        public IActionResult AddBiodegradableWaste(int dailyWasteBio)
+        {
+            var wasteVolumeData = _wasteVolumeDatumRepo.Table.FirstOrDefault();
+
+            wasteVolumeData.DailyWasteBio = dailyWasteBio;
+            wasteVolumeData.BiodegradableCollected += dailyWasteBio;
+
+            _wasteVolumeDatumRepo.Update(wasteVolumeData.Id, wasteVolumeData);
+
+            TempData["message"] = "Successfully updated daily waste collected for Biodegradable waste";
+
+            return RedirectToAction("WasteMetrics");
+        }
+
+        [HttpPost]
+        public IActionResult AddNonBiodegradableWaste(int dailyWasteNonBio)
+        {
+            var wasteVolumeData = _wasteVolumeDatumRepo.Table.FirstOrDefault();
+
+            wasteVolumeData.DailyWasteNonbio = dailyWasteNonBio;
+            wasteVolumeData.NonbioCollected += dailyWasteNonBio;
+
+            _wasteVolumeDatumRepo.Update(wasteVolumeData.Id, wasteVolumeData);
+
+            TempData["message"] = "Successfully updated daily waste collected for Non-Biodegradable waste";
+
+            return RedirectToAction("WasteMetrics");
+        }
+
+        [HttpPost]
+        public IActionResult AddRecyclableWaste(int dailyWasteRecyclable)
+        {
+            var wasteVolumeData = _wasteVolumeDatumRepo.Table.FirstOrDefault();
+
+            wasteVolumeData.DailyWasteRecyclable = dailyWasteRecyclable;
+            wasteVolumeData.RecyclablesCollected += dailyWasteRecyclable;
+
+            _wasteVolumeDatumRepo.Update(wasteVolumeData.Id, wasteVolumeData);
+
+            TempData["message"] = "Successfully updated daily waste collected for Recyclable waste";
+
+            return RedirectToAction("WasteMetrics");
+        }
+
+        [HttpPost]
         public IActionResult UpdateBiodegradableWaste(int BiodegradableWaste)
         {
             var wasteVolumeData = _wasteVolumeDatumRepo.Table.FirstOrDefault();
@@ -273,7 +318,33 @@ namespace PROJECTGREEN.Controllers
 
             var skTreasurer = _userRepo.Table.Where(m => m.BarangayPositionId == 8).FirstOrDefault();
             ViewBag.SKTreasurer = skTreasurer;
+
+            var responsibilities = _captainResponsibilityRepo.GetAll();
+            ViewBag.Responsibilities = responsibilities;
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult EditResponsibility(int responsibilityId, string responsibilityTitle, string responsibilityDescription)
+        {
+            var userId = User.Claims
+                            .FirstOrDefault(c => c.Type == "UserId" && c.Issuer == "projectgreen")?.Value;
+
+            if (userId == "1")
+            {
+                var responsibility = _captainResponsibilityRepo.Get(responsibilityId);
+
+                responsibility.ResponsibilityTitle = responsibilityTitle;
+                responsibility.Description = responsibilityDescription;
+
+                _captainResponsibilityRepo.Update(responsibility.Id, responsibility);
+
+                TempData["message"] = "Successfully edited responsibility!";
+                return RedirectToAction("Officials");
+            }
+
+            TempData["message"] = "Only the captain can edit th responsibilities!";
+            return RedirectToAction("Officials");
         }
 
         [HttpPost]
@@ -313,7 +384,7 @@ namespace PROJECTGREEN.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditOfficial(int Id, string firstName, string lastName, IFormFile ProfilePic)
+        public IActionResult EditOfficial(int Id, string firstName, string lastName, IFormFile ProfilePic, string email)
         {
             var official = _userRepo.Get(Id);
 
@@ -321,6 +392,7 @@ namespace PROJECTGREEN.Controllers
             {
                 official.FirstName = firstName;
                 official.LastName = lastName;
+                official.Email = email;
 
                 // Handle file upload for profile picture
                 if (ProfilePic != null && ProfilePic.Length > 0)
@@ -614,9 +686,45 @@ namespace PROJECTGREEN.Controllers
             return RedirectToAction("AllIncidents");
         }
 
+        public IActionResult Services()
+        {
+            var services = _barangayServiceRepo.GetAll();
+            ViewBag.Services = services;
+            return View();
+        }
 
+        [HttpPost]
+        public IActionResult EditService(int Id, string Title, string Description, string Schedule, string Location, IFormFile Photo)
+        {
+            var service = _barangayServiceRepo.Get(Id);
+            if (service != null)
+            {
+                service.Title = Title;
+                service.Description = Description;
+                service.Schedule = Schedule;
+                service.Location = Location;
+                // Handle file upload for profile picture
+                if (Photo != null && Photo.Length > 0)
+                {
+                    var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Attachments");
+                    var filePath = Path.Combine(uploads, Path.GetFileName(Photo.FileName));
+
+                    // Save file
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        Photo.CopyTo(fileStream);
+                    }
+
+                    // Update profile picture path
+                    service.LocationPhotoPath = $"/Attachments/{Path.GetFileName(Photo.FileName)}";
+                }
+
+                _barangayServiceRepo.Update(service.Id, service);
+                TempData["message"] = "Successfully edited service!";
+                return RedirectToAction("Services");
+            }
+            TempData["error"] = "Invalid service ID!";
+            return RedirectToAction("Services");
+        }
     }
-
-
-
 }

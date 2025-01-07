@@ -3,20 +3,80 @@
   "WorkspaceRootPath": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\shared\\_mainlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\shared\\_mainlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\admin\\mapscollection.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\admin\\mapscollection.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Models\\DbAb152cProjectgreendbContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PROJECTGREEN\\Models\\DbAb152cProjectgreendbContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\home\\requestofdocumentsandservices.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\home\\requestofdocumentsandservices.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\home\\organization.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\home\\organization.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\admin\\services.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\admin\\services.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\admin\\officials.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\admin\\officials.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\models\\dbab152cprojectgreendbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\models\\dbab152cprojectgreendbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\authentication\\signinmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\authentication\\signinmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\admin\\employeetimetable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\admin\\employeetimetable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\admin\\wastemetrics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\admin\\wastemetrics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\home\\wastemanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\home\\wastemanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\admin\\allincidents.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\admin\\allincidents.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\home\\incidents.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\home\\incidents.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\managers\\mailmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\managers\\mailmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\contracts\\ibaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,36 +87,12 @@
       "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\models\\projectgreendbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\repositories\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\repositories\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\home\\incidents.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\home\\incidents.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\admin\\pendingincidents.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\admin\\pendingincidents.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\admin\\allincidents.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\admin\\allincidents.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\admin\\officials.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\admin\\officials.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\admin\\programs.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -65,10 +101,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\home\\communityinvolvementprograms.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\home\\communityinvolvementprograms.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\admin\\employeetimetable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\admin\\employeetimetable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\home\\employeetimetable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -91,24 +123,8 @@
       "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\admin\\greeninitiativesroles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\home\\wastemanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\home\\wastemanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\admin\\garbagereports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\admin\\garbagereports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\managers\\mailmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\managers\\mailmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\admin\\mapscollection.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\admin\\mapscollection.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\admin\\wastemetrics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\views\\admin\\wastemetrics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\views\\admin\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -133,10 +149,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\models\\topevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\models\\topevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\authentication\\signinmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|solutionrelative:projectgreen\\authentication\\signinmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{092BB13A-6EBD-418B-B66F-4F49AE97A67E}|PROJECTGREEN\\PROJECTGREEN.csproj|c:\\users\\jilab\\onedrive\\documents\\github\\projectgreen\\projectgreen\\models\\tokenauthentication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -186,59 +198,254 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RequestOfDocumentsAndServices.cshtml",
+              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Home\\RequestOfDocumentsAndServices.cshtml",
+              "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Home\\RequestOfDocumentsAndServices.cshtml",
+              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Home\\RequestOfDocumentsAndServices.cshtml",
+              "RelativeToolTip": "PROJECTGREEN\\Views\\Home\\RequestOfDocumentsAndServices.cshtml",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAAwFQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-07T04:14:30.096Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "DbAb152cProjectgreendbContext.cs",
-              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Models\\DbAb152cProjectgreendbContext.cs",
-              "RelativeDocumentMoniker": "PROJECTGREEN\\Models\\DbAb152cProjectgreendbContext.cs",
-              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Models\\DbAb152cProjectgreendbContext.cs",
-              "RelativeToolTip": "PROJECTGREEN\\Models\\DbAb152cProjectgreendbContext.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAgAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-05T17:07:46.864Z",
+              "Title": "Organization.cshtml",
+              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Home\\Organization.cshtml",
+              "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Home\\Organization.cshtml",
+              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Home\\Organization.cshtml",
+              "RelativeToolTip": "PROJECTGREEN\\Views\\Home\\Organization.cshtml",
+              "ViewState": "AgIAADYBAAAAAAAAAADwv5gBAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-05T18:05:32.05Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "MapsCollection.cshtml",
+              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\MapsCollection.cshtml",
+              "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Admin\\MapsCollection.cshtml",
+              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\MapsCollection.cshtml",
+              "RelativeToolTip": "PROJECTGREEN\\Views\\Admin\\MapsCollection.cshtml",
+              "ViewState": "AgIAAJIAAAAAAAAAAAAEwJcAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-05T12:13:37.845Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "_MainLayout.cshtml",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Shared\\_MainLayout.cshtml",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Shared\\_MainLayout.cshtml",
               "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Shared\\_MainLayout.cshtml",
               "RelativeToolTip": "PROJECTGREEN\\Views\\Shared\\_MainLayout.cshtml",
-              "ViewState": "AgIAAOIAAAAAAAAAAAAAAOkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAwAwAAACdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-01-04T02:41:03.404Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Dashboard.cshtml",
-              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Home\\Dashboard.cshtml",
-              "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Home\\Dashboard.cshtml",
-              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Home\\Dashboard.cshtml",
-              "RelativeToolTip": "PROJECTGREEN\\Views\\Home\\Dashboard.cshtml",
-              "ViewState": "AgIAAOkAAAAAAAAAAAAUwP0AAAAJAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "Services.cshtml",
+              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\Services.cshtml",
+              "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Admin\\Services.cshtml",
+              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\Services.cshtml",
+              "RelativeToolTip": "PROJECTGREEN\\Views\\Admin\\Services.cshtml",
+              "ViewState": "AgIAABYAAAAAAAAAAAAqwB8AAABPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-05T10:32:45.463Z",
+              "WhenOpened": "2025-01-07T05:19:10.198Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 9,
+              "Title": "DbAb152cProjectgreendbContext.cs",
+              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Models\\DbAb152cProjectgreendbContext.cs",
+              "RelativeDocumentMoniker": "PROJECTGREEN\\Models\\DbAb152cProjectgreendbContext.cs",
+              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Models\\DbAb152cProjectgreendbContext.cs",
+              "RelativeToolTip": "PROJECTGREEN\\Models\\DbAb152cProjectgreendbContext.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAADsAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-07T04:51:33.572Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "_AdminLayout.cshtml",
+              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Shared\\_AdminLayout.cshtml",
+              "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Shared\\_AdminLayout.cshtml",
+              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Shared\\_AdminLayout.cshtml",
+              "RelativeToolTip": "PROJECTGREEN\\Views\\Shared\\_AdminLayout.cshtml",
+              "ViewState": "AgIAAI8BAAAAAAAAAAAiwGUBAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-04T10:25:56.416Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "BaseController.cs",
+              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Controllers\\BaseController.cs",
+              "RelativeDocumentMoniker": "PROJECTGREEN\\Controllers\\BaseController.cs",
+              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Controllers\\BaseController.cs",
+              "RelativeToolTip": "PROJECTGREEN\\Controllers\\BaseController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAC0AAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-07T00:04:42.562Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "AdminController.cs",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Controllers\\AdminController.cs",
               "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Controllers\\AdminController.cs",
               "RelativeToolTip": "PROJECTGREEN\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAEUAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAALQCAAAAAAAAAAAAwNMCAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-04T10:30:17.174Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
+              "Title": "Officials.cshtml",
+              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\Officials.cshtml",
+              "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Admin\\Officials.cshtml",
+              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\Officials.cshtml",
+              "RelativeToolTip": "PROJECTGREEN\\Views\\Admin\\Officials.cshtml",
+              "ViewState": "AgIAAKgAAAAAAAAAAAAAAKwAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-05T17:51:18.128Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "PROJECTGREEN\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "PROJECTGREEN\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAANYAAAAAAAAAAADwv+AAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-04T02:07:37.104Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "EmployeeTimeTable.cshtml",
+              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\EmployeeTimeTable.cshtml",
+              "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Admin\\EmployeeTimeTable.cshtml",
+              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\EmployeeTimeTable.cshtml",
+              "RelativeToolTip": "PROJECTGREEN\\Views\\Admin\\EmployeeTimeTable.cshtml",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAAAC8AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-05T15:27:40.972Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "WasteMetrics.cshtml",
+              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\WasteMetrics.cshtml",
+              "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Admin\\WasteMetrics.cshtml",
+              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\WasteMetrics.cshtml",
+              "RelativeToolTip": "PROJECTGREEN\\Views\\Admin\\WasteMetrics.cshtml",
+              "ViewState": "AgIAAHYAAAAAAAAAAAAcwJAAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-06T04:45:41.409Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Incidents.cshtml",
+              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Home\\Incidents.cshtml",
+              "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Home\\Incidents.cshtml",
+              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Home\\Incidents.cshtml",
+              "RelativeToolTip": "PROJECTGREEN\\Views\\Home\\Incidents.cshtml",
+              "ViewState": "AgIAALUAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-04T17:16:01.575Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "SignInManager.cs",
+              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Authentication\\SignInManager.cs",
+              "RelativeDocumentMoniker": "PROJECTGREEN\\Authentication\\SignInManager.cs",
+              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Authentication\\SignInManager.cs",
+              "RelativeToolTip": "PROJECTGREEN\\Authentication\\SignInManager.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAFYAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-05T04:39:52.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "AllIncidents.cshtml",
+              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\AllIncidents.cshtml",
+              "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Admin\\AllIncidents.cshtml",
+              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\AllIncidents.cshtml",
+              "RelativeToolTip": "PROJECTGREEN\\Views\\Admin\\AllIncidents.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAswCUAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-05T16:09:53.566Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "WasteManagement.cshtml",
+              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Home\\WasteManagement.cshtml",
+              "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Home\\WasteManagement.cshtml",
+              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Home\\WasteManagement.cshtml",
+              "RelativeToolTip": "PROJECTGREEN\\Views\\Home\\WasteManagement.cshtml",
+              "ViewState": "AgIAAIcCAAAAAAAAAAAAAJgCAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-04T09:10:04.55Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "MailManager.cs",
+              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Managers\\MailManager.cs",
+              "RelativeDocumentMoniker": "PROJECTGREEN\\Managers\\MailManager.cs",
+              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Managers\\MailManager.cs",
+              "RelativeToolTip": "PROJECTGREEN\\Managers\\MailManager.cs",
+              "ViewState": "AgIAAK0AAAAAAAAAAAAEwLcAAACYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-04T12:01:21.739Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Dashboard.cshtml",
+              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Home\\Dashboard.cshtml",
+              "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Home\\Dashboard.cshtml",
+              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Home\\Dashboard.cshtml",
+              "RelativeToolTip": "PROJECTGREEN\\Views\\Home\\Dashboard.cshtml",
+              "ViewState": "AgIAANAAAAAAAAAAAAAEwNoAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-05T10:32:45.463Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
               "Title": "IBaseRepository.cs",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Contracts\\IBaseRepository.cs",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Contracts\\IBaseRepository.cs",
@@ -246,12 +453,11 @@
               "RelativeToolTip": "PROJECTGREEN\\Contracts\\IBaseRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-05T17:08:25.18Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-05T17:08:25.18Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 20,
               "Title": "ProjectGreenDbContext.cs",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Models\\ProjectGreenDbContext.cs",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Models\\ProjectGreenDbContext.cs",
@@ -264,20 +470,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "BaseController.cs",
-              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Controllers\\BaseController.cs",
-              "RelativeDocumentMoniker": "PROJECTGREEN\\Controllers\\BaseController.cs",
-              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Controllers\\BaseController.cs",
-              "RelativeToolTip": "PROJECTGREEN\\Controllers\\BaseController.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAEwBoAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-04T02:07:28.782Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 21,
               "Title": "BaseRepository.cs",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Repositories\\BaseRepository.cs",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Repositories\\BaseRepository.cs",
@@ -290,59 +483,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "PROJECTGREEN\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "PROJECTGREEN\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAAEMAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-04T02:07:37.104Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Incidents.cshtml",
-              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Home\\Incidents.cshtml",
-              "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Home\\Incidents.cshtml",
-              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Home\\Incidents.cshtml",
-              "RelativeToolTip": "PROJECTGREEN\\Views\\Home\\Incidents.cshtml",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAAEgAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-04T17:16:01.575Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "_AdminLayout.cshtml",
-              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Shared\\_AdminLayout.cshtml",
-              "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Shared\\_AdminLayout.cshtml",
-              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Shared\\_AdminLayout.cshtml",
-              "RelativeToolTip": "PROJECTGREEN\\Views\\Shared\\_AdminLayout.cshtml",
-              "ViewState": "AgIAAE4BAAAAAAAAAAAswFgBAABbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-04T10:25:56.416Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "AllIncidents.cshtml",
-              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\AllIncidents.cshtml",
-              "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Admin\\AllIncidents.cshtml",
-              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\AllIncidents.cshtml",
-              "RelativeToolTip": "PROJECTGREEN\\Views\\Admin\\AllIncidents.cshtml",
-              "ViewState": "AgIAAAQBAAAAAAAAAAAswBEBAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-05T16:09:53.566Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 22,
               "Title": "PendingIncidents.cshtml",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\PendingIncidents.cshtml",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Admin\\PendingIncidents.cshtml",
@@ -355,33 +496,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Officials.cshtml",
-              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\Officials.cshtml",
-              "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Admin\\Officials.cshtml",
-              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\Officials.cshtml",
-              "RelativeToolTip": "PROJECTGREEN\\Views\\Admin\\Officials.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-05T13:35:52.584Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "EmployeeTimeTable.cshtml",
-              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\EmployeeTimeTable.cshtml",
-              "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Admin\\EmployeeTimeTable.cshtml",
-              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\EmployeeTimeTable.cshtml",
-              "RelativeToolTip": "PROJECTGREEN\\Views\\Admin\\EmployeeTimeTable.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-05T15:27:40.972Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 24,
               "Title": "CommunityInvolvementPrograms.cshtml",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Home\\CommunityInvolvementPrograms.cshtml",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Home\\CommunityInvolvementPrograms.cshtml",
@@ -394,7 +509,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 23,
               "Title": "Programs.cshtml",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\Programs.cshtml",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Admin\\Programs.cshtml",
@@ -402,12 +517,11 @@
               "RelativeToolTip": "PROJECTGREEN\\Views\\Admin\\Programs.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAALsAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-05T15:38:01.19Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-05T15:38:01.19Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 25,
               "Title": "EmployeeTimetable.cshtml",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Home\\EmployeeTimetable.cshtml",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Home\\EmployeeTimetable.cshtml",
@@ -420,7 +534,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 26,
               "Title": "GreenInitiativeSchedule.cshtml",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\GreenInitiativeSchedule.cshtml",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Admin\\GreenInitiativeSchedule.cshtml",
@@ -433,7 +547,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 28,
               "Title": "EmployeeWorkSchedules.cshtml",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Home\\EmployeeWorkSchedules.cshtml",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Home\\EmployeeWorkSchedules.cshtml",
@@ -446,7 +560,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 27,
               "Title": "EmployeeResponsibilities.cshtml",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\EmployeeResponsibilities.cshtml",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Admin\\EmployeeResponsibilities.cshtml",
@@ -459,7 +573,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 29,
               "Title": "GreenInitiativesRoles.cshtml",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\GreenInitiativesRoles.cshtml",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Admin\\GreenInitiativesRoles.cshtml",
@@ -472,7 +586,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 30,
               "Title": "GarbageReports.cshtml",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\GarbageReports.cshtml",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Admin\\GarbageReports.cshtml",
@@ -485,59 +599,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "WasteManagement.cshtml",
-              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Home\\WasteManagement.cshtml",
-              "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Home\\WasteManagement.cshtml",
-              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Home\\WasteManagement.cshtml",
-              "RelativeToolTip": "PROJECTGREEN\\Views\\Home\\WasteManagement.cshtml",
-              "ViewState": "AgIAAIwCAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-04T09:10:04.55Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "MailManager.cs",
-              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Managers\\MailManager.cs",
-              "RelativeDocumentMoniker": "PROJECTGREEN\\Managers\\MailManager.cs",
-              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Managers\\MailManager.cs",
-              "RelativeToolTip": "PROJECTGREEN\\Managers\\MailManager.cs",
-              "ViewState": "AgIAAMMAAAAAAAAAAAAAANIAAACkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-04T12:01:21.739Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "MapsCollection.cshtml",
-              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\MapsCollection.cshtml",
-              "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Admin\\MapsCollection.cshtml",
-              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\MapsCollection.cshtml",
-              "RelativeToolTip": "PROJECTGREEN\\Views\\Admin\\MapsCollection.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-05T12:13:37.845Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "WasteMetrics.cshtml",
-              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\WasteMetrics.cshtml",
-              "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Admin\\WasteMetrics.cshtml",
-              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\WasteMetrics.cshtml",
-              "RelativeToolTip": "PROJECTGREEN\\Views\\Admin\\WasteMetrics.cshtml",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-05T11:42:11.454Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 33,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Controllers\\AccountController.cs",
@@ -550,7 +612,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 31,
               "Title": "Dashboard.cshtml",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Admin\\Dashboard.cshtml",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Admin\\Dashboard.cshtml",
@@ -563,7 +625,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 32,
               "Title": "AdminViewModel.cs",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Models\\AdminViewModel.cs",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Models\\AdminViewModel.cs",
@@ -576,7 +638,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 34,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Program.cs",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Program.cs",
@@ -584,12 +646,11 @@
               "RelativeToolTip": "PROJECTGREEN\\Program.cs",
               "ViewState": "AgIAABwAAAAAAAAAAAAwwEAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-04T03:10:23.222Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-04T03:10:23.222Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 36,
               "Title": "TopEvent.cs",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Models\\TopEvent.cs",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Models\\TopEvent.cs",
@@ -602,7 +663,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 35,
               "Title": "IncidentFrequency.cs",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Models\\IncidentFrequency.cs",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Models\\IncidentFrequency.cs",
@@ -615,7 +676,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 37,
               "Title": "TokenAuthentication.cs",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Models\\TokenAuthentication.cs",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Models\\TokenAuthentication.cs",
@@ -628,20 +689,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "SignInManager.cs",
-              "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Authentication\\SignInManager.cs",
-              "RelativeDocumentMoniker": "PROJECTGREEN\\Authentication\\SignInManager.cs",
-              "ToolTip": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Authentication\\SignInManager.cs",
-              "RelativeToolTip": "PROJECTGREEN\\Authentication\\SignInManager.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAABBwE8AAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-05T04:39:52.055Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 38,
               "Title": "EmailMonitoringBackgroundTask.cs",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Managers\\EmailMonitoringBackgroundTask.cs",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Managers\\EmailMonitoringBackgroundTask.cs",
@@ -654,7 +702,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 39,
               "Title": "Login.cshtml",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Views\\Account\\Login.cshtml",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Views\\Account\\Login.cshtml",
@@ -662,12 +710,11 @@
               "RelativeToolTip": "PROJECTGREEN\\Views\\Account\\Login.cshtml",
               "ViewState": "AgIAAGUAAAAAAAAAAABBwHAAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-04T08:30:50.85Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-04T08:30:50.85Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 40,
               "Title": "style.css",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\wwwroot\\css\\style.css",
               "RelativeDocumentMoniker": "PROJECTGREEN\\wwwroot\\css\\style.css",
@@ -675,12 +722,11 @@
               "RelativeToolTip": "PROJECTGREEN\\wwwroot\\css\\style.css",
               "ViewState": "AgIAADcAAAAAAAAAAAASwEgAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-01-04T03:39:14.62Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-04T03:39:14.62Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 41,
               "Title": "bootstrap.min.css",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\wwwroot\\css\\bootstrap.min.css",
               "RelativeDocumentMoniker": "PROJECTGREEN\\wwwroot\\css\\bootstrap.min.css",
@@ -688,12 +734,11 @@
               "RelativeToolTip": "PROJECTGREEN\\wwwroot\\css\\bootstrap.min.css",
               "ViewState": "AgIAAAkAAAAAAAAAAAAlwBUAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-01-04T03:40:00.963Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-04T03:40:00.963Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 42,
               "Title": "CustomJwtDataFormat.cs",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\Authentication\\CustomJwtDataFormat.cs",
               "RelativeDocumentMoniker": "PROJECTGREEN\\Authentication\\CustomJwtDataFormat.cs",
@@ -701,12 +746,11 @@
               "RelativeToolTip": "PROJECTGREEN\\Authentication\\CustomJwtDataFormat.cs",
               "ViewState": "AgIAADgAAAAAAAAAAABRwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-04T03:00:43.347Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-04T03:00:43.347Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 43,
               "Title": "PROJECTGREEN.csproj",
               "DocumentMoniker": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\PROJECTGREEN.csproj",
               "RelativeDocumentMoniker": "PROJECTGREEN\\PROJECTGREEN.csproj",
@@ -714,8 +758,7 @@
               "RelativeToolTip": "PROJECTGREEN\\PROJECTGREEN.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-01-04T03:00:37.847Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-04T03:00:37.847Z"
             }
           ]
         },

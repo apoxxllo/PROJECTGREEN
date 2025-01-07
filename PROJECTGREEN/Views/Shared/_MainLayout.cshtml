@@ -7,16 +7,22 @@
 
 <head>
     <meta charset="utf-8">
-    <title>@ViewData["Title"]</title>
+    <title>@ViewData["Title"] | Babag EcoHub</title> <!-- Include the site name in title -->
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta content="Babag EcoHub, Barangay Services, EcoHub Services, Barangay Documents, Local Services, Barangay Babag, Babag, Lapu-Lapu City, Barangay, Organization, Eulogio, Manayon" name="keywords"> <!-- Add relevant keywords -->
+    <meta content="Babag EcoHub provides easy access to various Barangay services including certifications, clearances, garbage collection, waste management, and community assistance." name="description"> <!-- Add a concise and clear description -->
+    <meta property="og:title" content="@ViewData["Title"] | Babag EcoHub"> <!-- Open Graph for social media sharing -->
+    <meta property="og:description" content="Babag EcoHub provides easy access to Barangay documents, information, certificates, and services. Get all the information you need to avail of local services.">
+    <meta property="og:url" content="http://babagecohub-001-site1.mtempurl.com/"> <!-- Use your site URL -->
+    <meta name="robots" content="index, follow"> <!-- Direct search engines to index your pages -->
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.5/css/dataTables.dataTables.css" />
+
 
     <link rel="icon" href="~/images/babagLogo.png" />
 
@@ -105,7 +111,9 @@
                         <div class="topbar-info d-flex flex-wrap">
                             <a href="#" class="text-light me-4"><i class="fas fa-envelope text-white me-2"></i>babagofficial@gmail.com</a>
                             <a href="#" class="text-light me-4"><i class="fas fa-phone-alt text-white me-2"></i>+01234567890</a>
+                            <a href="~/Home/RequestOfDocumentsAndServices" class="text-light me-4"><i class="fas fa-wrench"></i> Our Services</a>
                             <a href="~/Account/Login" class="text-light"><i class="fas fa-sign-in-alt"></i> Login as an Official</a>
+
 
                         </div>
                     </div>
@@ -152,7 +160,7 @@
     <!-- About End -->
   
     <!-- Footer Start -->
-    <div class="container-fluid footer bg-dark text-body py-5">
+    <div class="container-fluid footer bg-dark text-body py-5 mt-4">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-md-6 col-lg-6 col-xl-3">

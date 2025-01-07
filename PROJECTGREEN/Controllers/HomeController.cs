@@ -104,7 +104,10 @@ namespace PROJECTGREEN.Controllers
             var emailInSubscribers = _emailsForNotificationAlertRepo.Table.Where(m => m.Email == email).FirstOrDefault();
             if (emailInSubscribers != null)
             {
-                TempData["error"] = "The email you've entered has already been subscribed";
+                emailInSubscribers.DayOfTheWeek = dayOfWeek;
+                emailInSubscribers.Zone = zone;
+                _emailsForNotificationAlertRepo.Update(emailInSubscribers.Id, emailInSubscribers);
+                TempData["message"] = "You have successfully updated your preferences for garbage collection alerts!";
                 return RedirectToAction("WasteManagement"); // Redirect to the appropriate page
             }
             var newEmail = new EmailsForNotificationAlert()
@@ -119,6 +122,7 @@ namespace PROJECTGREEN.Controllers
             _emailsForNotificationAlertRepo.Create(newEmail);
 
             TempData["message"] = "You have successfully subscribed for email alerts!";
+
             return RedirectToAction("WasteManagement"); // Redirect to the home page or any page
         }
 
@@ -210,12 +214,19 @@ namespace PROJECTGREEN.Controllers
             var skTreasurer = _userRepo.Table.Where(m => m.BarangayPositionId == 8).FirstOrDefault();
             ViewBag.SKTreasurer = skTreasurer;
 
+            var responsibilities = _captainResponsibilityRepo.GetAll();
+            ViewBag.Responsibilities = responsibilities;
 
             return View();
         }
 
 
-
+        public IActionResult RequestOfDocumentsAndServices()
+        {
+            var services  = _barangayServiceRepo.GetAll();
+            ViewBag.Services = services;    
+            return View();
+        }
 
         public IActionResult CommunityInvolvementPrograms()
         {

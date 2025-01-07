@@ -22,6 +22,9 @@ namespace PROJECTGREEN.Controllers
         public BaseRepository<EmployeeTimetable> _employeeTimetableRepo;
         public BaseRepository<IncidentFeedback> _incidentFeedbackRepo;
         public BaseRepository<ReportGarbageCollection> _reportGarbageCollectionRepo;
+        public BaseRepository<CaptainResponsibility> _captainResponsibilityRepo;
+        public BaseRepository<BarangayService> _barangayServiceRepo;
+
         public BaseController()
         {
             _db = new DbAb152cProjectgreendbContext();
@@ -39,6 +42,8 @@ namespace PROJECTGREEN.Controllers
             _employeeTimetableRepo = new BaseRepository<EmployeeTimetable>();
             _incidentFeedbackRepo = new BaseRepository<IncidentFeedback>();
             _reportGarbageCollectionRepo = new BaseRepository<ReportGarbageCollection>();
+            _captainResponsibilityRepo = new BaseRepository<CaptainResponsibility>();
+            _barangayServiceRepo = new BaseRepository<BarangayService>();
         }
 
     }

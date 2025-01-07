@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xBsuPveDEuOARJb80YhTRld4/7coGCg4RbUmMjALuOk=",
+  "Hash": "qRP729pvtRZcE1vkyV4Ba2XTa2fAlawJcaAULlVZMSE=",
   "Source": "PROJECTGREEN",
   "BasePath": "_content/PROJECTGREEN",
   "Mode": "Default",
@@ -33246,6 +33246,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\wwwroot\\images\\babaghall.jpg",
+      "SourceId": "PROJECTGREEN",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\wwwroot\\",
+      "BasePath": "_content/PROJECTGREEN",
+      "RelativePath": "images/babaghall.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\babaghall.jpg"
     },
     {
       "Identity": "C:\\Users\\jilab\\OneDrive\\Documents\\GitHub\\PROJECTGREEN\\PROJECTGREEN\\wwwroot\\images\\babagLandscape1.png",

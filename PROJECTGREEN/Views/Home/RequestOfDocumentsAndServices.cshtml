@@ -1,0 +1,108 @@
+﻿@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewData["Title"] = "Babag EcoHub: Request of Barangay Documents and Services";
+
+    var services = ViewBag.Services as List<BarangayService>;
+}
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div class="container mt-5">
+    <h1 class="text-center text-primary mb-4">Babag EcoHub: Request of Barangay Documents and Services</h1>
+    <p class="text-muted text-center mb-5">
+        Welcome to the Babag EcoHub! Below are the available barangay documents and services. Click on a card to view more details.
+    </p>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @* Barangay Indigency Certificate *@
+        @foreach (var service in services)
+        {
+            <div class="col">
+                <div class="card h-100 shadow">
+                    <img src="@(string.IsNullOrEmpty(service.LocationPhotoPath) ? Url.Content("~/images/babaghall.jpg") : Url.Content(service.LocationPhotoPath))"
+                         class="card-img-top"
+                         style="width: 100%; height: 200px; object-fit: cover;"
+                         alt="Location Image"
+                         onerror="this.onerror=null; this.src='@Url.Content("~/images/babaghall.jpg")';">
+                    <div class="card-body">
+                        <h5 class="card-title text-success">@service.Title</h5>
+                        <p class="card-text">
+                            @service.Description
+                        </p>
+                        <button class="btn btn-primary btn-sm view-details-btn"
+                                data-bs-toggle="modal"
+                                data-bs-target="#serviceModal"
+                                data-title="@service.Title"
+                                data-description="@service.Description"
+                                data-schedule="@service.Schedule"
+                                data-location="@service.Location"
+                                data-photo="@(string.IsNullOrEmpty(service.LocationPhotoPath) ? Url.Content("~/images/babaghall.jpg") : Url.Content(service.LocationPhotoPath))">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="serviceModalLabel">Service Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-5">
+                        <img id="modalImage" src="" class="img-fluid rounded shadow-sm" alt="Service Image" style="width: 100%; height: auto; object-fit: cover;">
+                    </div>
+                    <div class="col-md-7">
+                        <h5 id="modalTitle" class="text-success"></h5>
+                        <p id="modalDescription"></p>
+                        <ul class="list-unstyled">
+                            <li><strong>Schedule:</strong> <span id="modalSchedule"></span></li>
+                            <li><strong>Location:</strong> <span id="modalLocation"></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Add Bootstrap Script -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        // Handle "View Details" button click
+        $('.view-details-btn').on('click', function () {
+            // Extract data attributes from the clicked button
+            const title = $(this).data('title');
+            const description = $(this).data('description');
+            const schedule = $(this).data('schedule');
+            const location = $(this).data('location');
+            const photo = $(this).data('photo');
+
+            // Populate modal fields
+            $('#modalTitle').text(title);
+            $('#modalDescription').text(description);
+            $('#modalSchedule').text(schedule);
+            $('#modalLocation').text(location);
+            $('#modalImage').attr('src', photo).on('error', function () {
+                $(this).attr('src', '@Url.Content("~/images/babaghall.jpg")');
+            });
+        });
+    });
+</script>

@@ -19,6 +19,10 @@ public partial class DbAb152cProjectgreendbContext : DbContext
 
     public virtual DbSet<BarangayPosition> BarangayPositions { get; set; }
 
+    public virtual DbSet<BarangayService> BarangayServices { get; set; }
+
+    public virtual DbSet<CaptainResponsibility> CaptainResponsibilities { get; set; }
+
     public virtual DbSet<Committee> Committees { get; set; }
 
     public virtual DbSet<CommitteeAssignment> CommitteeAssignments { get; set; }
@@ -79,6 +83,23 @@ public partial class DbAb152cProjectgreendbContext : DbContext
             entity.Property(e => e.BrgyPosition)
                 .HasMaxLength(50)
                 .HasColumnName("brgyPosition");
+        });
+
+        modelBuilder.Entity<BarangayService>(entity =>
+        {
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Description).HasColumnName("description");
+            entity.Property(e => e.Location).HasColumnName("location");
+            entity.Property(e => e.LocationPhotoPath).HasColumnName("locationPhotoPath");
+            entity.Property(e => e.Schedule).HasColumnName("schedule");
+            entity.Property(e => e.Title).HasColumnName("title");
+        });
+
+        modelBuilder.Entity<CaptainResponsibility>(entity =>
+        {
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Description).HasColumnName("description");
+            entity.Property(e => e.ResponsibilityTitle).HasColumnName("responsibilityTitle");
         });
 
         modelBuilder.Entity<Committee>(entity =>

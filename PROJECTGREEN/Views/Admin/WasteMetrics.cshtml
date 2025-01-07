@@ -96,6 +96,10 @@
                                 <br />
 
                                 <button class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#editBiodegradableWasteModal">Edit</button>
+                                <!-- Button to Add Daily Biodegradable Waste -->
+                                <button class="btn btn-success btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#addDailyBiodegradableWasteModal">
+                                    Add Today's Biodegradable Waste
+                                </button>
                             </div>
                         </div>
 
@@ -114,6 +118,10 @@
                                 <br />
 
                                 <button class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#editNonbioWasteModal">Edit</button>
+                                <!-- Non-Biodegradable -->
+                                <button class="btn btn-success btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#addDailyNonBiodegradableWasteModal">
+                                    Add Today's Non-Biodegradable Waste
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -134,6 +142,9 @@
                                 <br />
 
                                 <button class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#editRecyclablesCollectedModal">Edit</button>
+                                <button class="btn btn-success btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#addDailyRecyclableWasteModal">
+                                    Add Today's Recyclable Waste
+                                </button>
                             </div>
                         </div>
 
@@ -215,6 +226,164 @@
                         </div>
                     </div>
 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal for Adding Daily Biodegradable Waste -->
+<div class="modal fade" id="addDailyBiodegradableWasteModal" tabindex="-1" aria-labelledby="addDailyBiodegradableWasteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addDailyBiodegradableWasteModalLabel">Add Today's Biodegradable Waste</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Form for Adding Today's Biodegradable Waste -->
+                <form asp-action="AddBiodegradableWaste" asp-controller="Admin" method="post">
+                    <div class="mb-3">
+                        <label for="dailyWasteBio" class="form-label">Today's Biodegradable Waste (kg)</label>
+                        <input type="number" class="form-control" id="dailyWasteBio" name="dailyWasteBio" placeholder="Enter weight in kilograms" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+
+                <!-- Display Past Daily Collected Data -->
+                <div class="mt-4">
+                    <h5>Past Daily Collected Biodegradable Waste</h5>
+                    @if (Model.Volume.DailyWasteBio != null)
+                    {
+                        <ul class="list-group">
+
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>@Model.Volume.DailyWasteBio.Value.ToString("N2") kg</span>
+                            </li>
+
+                        </ul>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info mt-3">
+                            No past data available for biodegradable waste collection.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Biodegradable Waste Modal -->
+<div class="modal fade" id="addDailyBiodegradableWasteModal" tabindex="-1" aria-labelledby="addDailyBiodegradableWasteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addDailyBiodegradableWasteModalLabel">Add Today's Biodegradable Waste</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="AddBiodegradableWaste" asp-controller="Admin" method="post">
+                    <div class="mb-3">
+                        <label for="dailyWasteBio" class="form-label">Today's Biodegradable Waste (kg)</label>
+                        <input type="number" class="form-control" id="dailyWasteBio" name="dailyWasteBio" placeholder="Enter weight in kilograms" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <div class="mt-4">
+                    <h5>Past Daily Collected Biodegradable Waste</h5>
+                    @if (Model.Volume.DailyWasteBio != null)
+                    {
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>@Model.Volume.DailyWasteBio.Value.ToString("N2") kg</span>
+                            </li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info mt-3">
+                            No past data available for biodegradable waste collection.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Non-Biodegradable Waste Modal -->
+<div class="modal fade" id="addDailyNonBiodegradableWasteModal" tabindex="-1" aria-labelledby="addDailyNonBiodegradableWasteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addDailyNonBiodegradableWasteModalLabel">Add Today's Non-Biodegradable Waste</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="AddNonBiodegradableWaste" asp-controller="Admin" method="post">
+                    <div class="mb-3">
+                        <label for="dailyWasteNonBio" class="form-label">Today's Non-Biodegradable Waste (kg)</label>
+                        <input type="number" class="form-control" id="dailyWasteNonBio" name="dailyWasteNonBio" placeholder="Enter weight in kilograms" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <div class="mt-4">
+                    <h5>Past Daily Collected Non-Biodegradable Waste</h5>
+                    @if (Model.Volume.DailyWasteNonbio != null)
+                    {
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>@Model.Volume.DailyWasteNonbio.Value.ToString("N2") kg</span>
+                            </li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info mt-3">
+                            No past data available for non-biodegradable waste collection.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recyclable Waste Modal -->
+<div class="modal fade" id="addDailyRecyclableWasteModal" tabindex="-1" aria-labelledby="addDailyRecyclableWasteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addDailyRecyclableWasteModalLabel">Add Today's Recyclable Waste</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="AddRecyclableWaste" asp-controller="Admin" method="post">
+                    <div class="mb-3">
+                        <label for="dailyWasteRecyclable" class="form-label">Today's Recyclable Waste (kg)</label>
+                        <input type="number" class="form-control" id="dailyWasteRecyclable" name="dailyWasteRecyclable" placeholder="Enter weight in kilograms" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <div class="mt-4">
+                    <h5>Past Daily Collected Recyclable Waste</h5>
+                    @if (Model.Volume.DailyWasteRecyclable != null)
+                    {
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>@Model.Volume.DailyWasteRecyclable.Value.ToString("N2") kg</span>
+                            </li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info mt-3">
+                            No past data available for recyclable waste collection.
+                        </div>
+                    }
                 </div>
             </div>
         </div>
